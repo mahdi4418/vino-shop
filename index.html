@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VINO | تجربه‌ای متفاوت از عطر</title>
-    <!-- فونت فارسی وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <!-- آیکون‌ها -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- فایل استایل -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- منوی شناور بالا (Glassmorphism) -->
+    <!-- منوی شناور بالا -->
     <header class="glass-nav">
         <div class="nav-container">
             <div class="logo">
@@ -22,10 +19,9 @@
             </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#">خانه</a></li>
-                    <li><a href="#">محصولات</a></li>
-                    <li><a href="#">درباره ما</a></li>
-                    <li><a href="#">تماس</a></li>
+                    <!-- دکمه‌های تب -->
+                    <li><a href="#" class="nav-btn active" data-target="home">خانه</a></li>
+                    <li><a href="#" class="nav-btn" data-target="about">درباره ما</a></li>
                 </ul>
             </nav>
             <div class="nav-icons">
@@ -35,61 +31,95 @@
         </div>
     </header>
 
-    <!-- بخش هیرو (بنر اصلی با انیمیشن) -->
-    <section class="hero-section">
-        <div class="hero-bg" style="background-image: url('header.png');"></div>
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-content">
-            <div class="fade-in-up delay-1">
-                <h1 class="main-title">عطر، امضای شخصیت شماست</h1>
-                <p class="subtitle">در فروشگاه VINO به دنیایی از رایحه‌های خاص و ماندگار قدم بگذارید. تجربه‌ای لوکس از خرید ادکلن و عطر.</p>
+    <!-- تب ۱: خانه (Hero) -->
+    <section id="home" class="tab-content active">
+        <div class="hero-section">
+            <div class="hero-bg" style="background-image: url('header.png');"></div>
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+                <div class="fade-in-up delay-1">
+                    <h1 class="main-title">عطر، امضای شخصیت شماست</h1>
+                    <p class="subtitle">در فروشگاه VINO به دنیایی از رایحه‌های خاص و ماندگار قدم بگذارید. تجربه‌ای لوکس از خرید ادکلن و عطر.</p>
+                </div>
+                
+                <div class="features-grid fade-in-up delay-2">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>تضمین اصالت کالا</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span>ارسال سریع کشوری</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-star"></i>
+                        <span>تنوع بی‌نظیر برندها</span>
+                    </div>
+                </div>
+
+                <a href="#" class="cta-button fade-in-up delay-3">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    همین حالا خرید کنید
+                </a>
             </div>
             
-            <div class="features-grid fade-in-up delay-2">
-                <div class="feature-item">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <span>تضمین اصالت کالا</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <span>ارسال سریع کشوری</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fa-solid fa-star"></i>
-                    <span>تنوع بی‌نظیر برندها</span>
-                </div>
-            </div>
-
-            <a href="#" class="cta-button fade-in-up delay-3">
-                <i class="fa-solid fa-cart-shopping"></i>
-                همین حالا خرید کنید
-            </a>
-        </div>
-        
-        <div class="slogan-text">More than a scent... It's a lifestyle</div>
-    </section>
-
-    <!-- بخش دوم (معرفی و تصویر) -->
-    <section class="about-section">
-        <div class="container about-container">
-            <div class="about-image fade-in-right">
-                <!-- استفاده از تصویر شما با نام images.png -->
-                <img src="images.png" alt="VINO Perfume Lifestyle" class="main-img">
-            </div>
-            <div class="about-text fade-in-left">
-                <h2 class="section-title">VINO Perfume & Cologne</h2>
-                <p>مجموعه‌ای از عطرها و ادکلن‌های خاص و ماندگار برای سلیقه‌های متفاوت. ما در VINO تلاش می‌کنیم تا بهترین رایحه‌ها را با کیفیت عالی و قیمت مناسب به شما ارائه دهیم.</p>
-                <ul class="styled-list">
-                    <li><i class="fa-solid fa-check"></i> رایحه‌های جذاب و کیفیت عالی</li>
-                    <li><i class="fa-solid fa-check"></i> تضمین اصالت و کیفیت کالا</li>
-                    <li><i class="fa-solid fa-check"></i> ارسال سریع به سراسر کشور</li>
-                    <li><i class="fa-solid fa-check"></i> انتخابی خاص برای خودتان و عزیزانتان</li>
-                </ul>
-                <p class="highlight-text">رایحه‌ای انتخاب کنید که شما را به یاد ماندنی کند.</p>
-            </div>
+            <div class="slogan-text">More than a scent... It's a lifestyle</div>
         </div>
     </section>
 
+    <!-- تب ۲: درباره ما (About & Contact) -->
+    <section id="about" class="tab-content">
+        <div class="about-section">
+            <div class="about-container">
+                
+                <!-- بخش عکس و شبکه‌های اجتماعی -->
+                <div class="about-image-wrapper">
+                    <div class="glow-effect"></div>
+                    <img src="images.png" alt="VINO Perfume Lifestyle" class="main-img">
+                    
+                    <!-- کارت‌های شبکه‌های اجتماعی -->
+                    <div class="social-cards">
+                        <a href="https://t.me/vinoshop111" target="_blank" class="social-card telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                            <div class="social-info">
+                                <span>تلگرام</span>
+                                <small>پشتیبانی و کانال</small>
+                            </div>
+                        </a>
+                        
+                        <a href="https://ble.ir/vinoshop111" target="_blank" class="social-card bale">
+                            <i class="fa-solid fa-comment-dots"></i>
+                            <div class="social-info">
+                                <span>بله</span>
+                                <small>ارتباط مستقیم</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- بخش متن درباره ما -->
+                <div class="about-text">
+                    <h2 class="section-title fade-in-right">داستان VINO</h2>
+                    <div class="luxury-line"></div>
+                    <p class="fade-in-right delay-1">در دنیای پر از عطرها، ما در <strong>VINO</strong> به دنبال چیزی فراتر از یک رایحه ساده هستیم. ما معتقدیم که عطر، امضای نهایی استایل شماست. مجموعه‌ای از عطرها و ادکلن‌های خاص و ماندگار برای سلیقه‌های متفاوت.</p>
+                    
+                    <ul class="styled-list fade-in-right delay-2">
+                        <li><i class="fa-solid fa-gem"></i> <div><strong>کیفیت بی‌نظیر:</strong> رایحه‌های جذاب با اصالت تضمین شده.</div></li>
+                        <li><i class="fa-solid fa-bolt"></i> <div><strong>ارسال سریع:</strong> ارسال به سراسر کشور در سریع‌ترین زمان ممکن.</div></li>
+                        <li><i class="fa-solid fa-heart"></i> <div><strong>انتخاب خاص:</strong> رایحه‌ای که شما را به یاد ماندنی می‌کند.</div></li>
+                    </ul>
+
+                    <div class="contact-box fade-in-right delay-3">
+                        <p>برای مشاوره در انتخاب عطر و دریافت لیست قیمت‌ها، کافیست روی یکی از راه‌های ارتباطی ما کلیک کنید. تیم ما آماده پاسخگویی به شماست.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- لینک فایل جاوا اسکریپت -->
+    <script src="script.js"></script>
 </body>
 </html>
