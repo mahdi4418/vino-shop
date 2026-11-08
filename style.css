@@ -1,64 +1,417 @@
-/**
-Theme Name: Astra
-Theme URI: https://wpastra.com/
-Author: Brainstorm Force
-Author URI: https://wpastra.com/about/?utm_source=theme_preview&utm_medium=author_link&utm_campaign=astra_theme
-Description: The Astra WordPress theme is lightning-fast and highly customizable. It has over 1 million downloads and the only theme in the world with 6,000+ five-star reviews! It’s ideal for professional web designers, solopreneurs, small businesses, eCommerce, membership sites and any type of website. It offers special features and templates so it works perfectly with all page builders like Spectra, Elementor, Beaver Builder, etc. Fast performance, clean code, mobile-first design and schema markup are all built-in, making the theme exceptionally SEO-friendly. It’s fully compatible with WooCommerce, SureCart and other eCommerce plugins and comes with lots of store-friendly features and templates. Astra also provides expert support for free users. A dedicated team of fully trained WordPress experts are on hand to help with every aspect of the theme. Try the live demo of Astra: https://zipwp.org/themes/astra/
-Version: 4.14.1
-Requires at least: 5.3
-WC requires at least: 3.0
-WC tested up to: 11.2.0
-Tested up to: 7.1
-Requires PHP: 5.3
-License: GNU General Public License v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: astra
-Domain Path: /languages
-Tags: custom-menu, custom-logo, entertainment, one-column, two-columns, left-sidebar, e-commerce, right-sidebar, custom-colors, editor-style, featured-images, full-width-template, microformats, post-formats, rtl-language-support, theme-options, threaded-comments, translation-ready, blog
-AMP: true
+/* --- تنظیمات پایه و متغیرها --- */
+:root {
+    --primary-gold: #d4af37;
+    --primary-gold-hover: #f1c40f;
+    --text-light: #f5f5f5;
+    --text-muted: #aaaaaa;
+    --bg-dark: #0a0a0a;
+    --glass-bg: rgba(15, 15, 15, 0.6);
+    --glass-border: rgba(212, 175, 55, 0.2);
+    --font-family: 'Vazirmatn', sans-serif;
+}
 
-Astra WordPress Theme, Copyright 2020 WPAstra.
-Astra is distributed under the terms of the GNU GPL.
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-Astra is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v2 or later.
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
 
-Normalizing styles have been helped along thanks to the fine work of.
-Nicolas Gallagher and Jonathan Neal https://necolas.github.com/normalize.css/
+/* --- منوی شناور شیشه‌ای (Glass Navbar) --- */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
+}
 
-Astra icon font is based on IcoMoon-Free vector icon by Keyamoon.
-IcoMoon-Free vector icon distributed under terms of CC BY 4.0 or GPL. (https://creativecommons.org/licenses/by/4.0/ or https://www.gnu.org/licenses/gpl.html)
-Source: http://keyamoon.com/
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-Flexibility is a JavaScript polyfill for Flexbox By Jonathan Neal, 10up. (https://github.com/jonathantneal/flexibility)
-Licensed under MIT ( https://github.com/jonathantneal/flexibility/blob/master/LICENSE.md )
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.5rem;
+    color: var(--primary-gold);
+    letter-spacing: 2px;
+}
 
-Screenshot image is a collage of actual sites created using the Astra WordPress Theme.
+.nav-logo-img {
+    height: 35px;
+    width: auto;
+}
 
-Icons used in the Screenshot image are all licensed under Creative Commons ( CC BY 4.0 ) License ( https://fontawesome.com/license/free )
-https://fontawesome.com/v5.15/icons/store?style=solid
-https://fontawesome.com/v5.15/icons/shopping-cart?style=solid
-https://fontawesome.com/v5.15/icons/pen-square?style=solid
-https://fontawesome.com/v5.15/icons/user-tie?style=solid
-https://fontawesome.com/v5.15/icons/user-tie?style=solid
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
 
-Illustrations used in the Screenshot images are all licensed under Creative Commons ( CC0 ) License ( https://gumroad.com/l/humaaans )
-https://websitedemos.net/web-design-agency-08/wp-content/uploads/sites/796/2021/05/standing-24.png
-https://websitedemos.net/web-design-agency-08/wp-content/uploads/sites/796/2021/05/sitting-2.png
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.3s;
+}
 
-Hand-drawn illustrations used are created by Brainstorm Force and released under Creative Commons ( CC0 ) License.
-https://websitedemos.net/web-design-agency-08/wp-content/uploads/sites/796/2021/05/girl-with-image-container.png
-https://websitedemos.net/web-design-agency-08/wp-content/uploads/sites/796/2021/05/boy-with-code-container.png
-https://websitedemos.net/web-design-agency-08/wp-content/uploads/sites/796/2021/05/web-browser.png
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-gold);
+    transition: width 0.3s ease;
+}
 
-The same site as screenshot can be imported from here https://websitedemos.net/web-design-agency-08/.
+.nav-links a:hover {
+    color: var(--primary-gold);
+}
 
-For more information, refer to this document on how to create a page like in the screenshot - https://wpastra.com/docs/replicating-the-screenshot/.
+.nav-links a:hover::after {
+    width: 100%;
+}
 
-Astra default breadcrumb is based on Breadcrumb Trail by Justin Tadlock. (https://github.com/justintadlock/breadcrumb-trail)
-Breadcrumb Trail is distributed under the terms of the GNU GPL v2 or later.
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
 
-Astra local fonts feature is based on Webfonts Loader by WordPress Themes Team (WPTT). (https://github.com/WPTT/webfont-loader)
-Licensed under MIT ( https://github.com/WPTT/webfont-loader/blob/master/LICENSE )
+.nav-icons i:hover {
+    color: var(--primary-gold-hover);
+    transform: scale(1.1);
+    transition: 0.3s;
+}
 
-/* Note: The CSS files are loaded from assets/css/ folder. */
+/* --- بخش هیرو (Hero Section) --- */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 50px 50px 50px;
+    overflow: hidden;
+}
+
+/* انیمیشن زوم شدن آرام پس‌زمینه */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    animation: slowZoom 20s infinite alternate;
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* گرادیانت تاریک برای خوانایی متن */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(10, 10, 10, 0.95) 40%, rgba(10, 10, 10, 0.3) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin-right: auto;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    line-height: 1.3;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 90%;
+}
+
+/* ویژگی‌ها */
+.features-grid {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 20px 0;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.feature-item i {
+    font-size: 24px;
+    color: var(--primary-gold);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover i {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.feature-item span {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* دکمه خرید با افکت نئونی */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(45deg, #b8860b, var(--primary-gold));
+    color: var(--bg-dark);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 10px rgba(212, 175, 55, 0.5);
+    color: #000;
+}
+
+/* شعار پایین صفحه */
+.slogan-text {
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    font-family: 'Cursive', serif;
+    font-style: italic;
+    color: #ddd;
+    z-index: 2;
+    font-size: 1.5rem;
+    transform: rotate(-5deg);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+    opacity: 0.7;
+}
+
+/* --- بخش درباره ما (About Section) --- */
+.about-section {
+    padding: 100px 0;
+    background-color: #0d0d0d;
+    position: relative;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid var(--glass-border);
+}
+
+.main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.about-image:hover .main-img {
+    transform: scale(1.05);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', serif;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.styled-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.styled-list li {
+    margin-bottom: 12px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.styled-list i {
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+}
+
+.highlight-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary-gold) !important;
+    border-right: 3px solid var(--primary-gold);
+    padding-right: 15px;
+}
+
+/* --- انیمیشن‌های ورودی (Fade In) --- */
+.fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-right {
+    animation: fadeInRight 1.2s ease forwards;
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.fade-in-left {
+    animation: fadeInLeft 1.2s ease forwards;
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+@keyframes fadeInRight {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInLeft {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- طراحی واکنش‌گرا (موبایل و تبلت) --- */
+@media (max-width: 992px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+    .about-image {
+        order: -1; /* عکس بالای متن در موبایل */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* مخفی کردن منو در موبایل برای سادگی */
+    }
+    
+    .hero-section {
+        padding: 120px 20px 60px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .hero-overlay {
+        background: rgba(10, 10, 10, 0.85); /* تاریک‌تر کردن کل پس‌زمینه در موبایل */
+    }
+
+    .hero-content {
+        margin: 0 auto;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        margin: 0 auto 30px;
+        max-width: 100%;
+    }
+
+    .features-grid {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .slogan-text {
+        position: static;
+        margin-top: 40px;
+        text-align: center;
+        transform: none;
+        font-size: 1.2rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+    }
+}
