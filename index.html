@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090807">
-  <meta name="description" content="VINO؛ بوتیک آنلاین عطر و ادکلن. رایحه‌ای برای امضای شخصیت شما.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1e9">
+  <meta name="description" content="VINO؛ بوتیک عطر برای کشف رایحه‌های خاص، بررسی جزئیات عطر و آماده‌سازی سفارش. تجربه‌ای مینیمال و لوکس در دنیای عطر.">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="VINO | بوتیک عطر و ادکلن">
-  <meta property="og:description" content="دنیایی از رایحه‌های خاص و ماندگار در بوتیک VINO">
+  <meta property="og:title" content="VINO | Perfume Atelier">
+  <meta property="og:description" content="رایحه‌ای که به یاد می‌ماند؛ مجموعه عطرهای VINO را کشف کن.">
   <meta property="og:image" content="header.png">
-  <title>VINO | بوتیک عطر و ادکلن لوکس</title>
-
+  <title>VINO | Perfume Atelier — بوتیک عطر</title>
   <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -26,250 +25,342 @@
   <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
-  <div class="preloader" id="preloader" aria-label="در حال بارگذاری سایت">
-    <div class="preloader-orbit"></div>
-    <img src="logo.png" alt="VINO" class="preloader-logo">
-    <div class="preloader-word">VINO</div>
-    <p>رایحه‌ای فراتر از انتظار</p>
-    <div class="preloader-line"><span></span></div>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-mark"><span></span><span></span><span></span></div>
+    <img src="logo.png" alt="" class="preloader-logo">
+    <strong>VINO</strong>
+    <small>PERFUME ATELIER</small>
+  </div>
+  <div class="toast-host" id="toast-host" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="announcement-bar">
+    <span>VINO / PERFUME ATELIER</span>
+    <span class="announcement-center">کشف رایحه، با حوصله و سلیقه</span>
+    <a href="#contact" onclick="navigateTo('contact');return false;">ارتباط با ما <i class="fa-solid fa-arrow-left"></i></a>
   </div>
 
-  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
-
   <header class="site-header" id="site-header">
-    <div class="nav-container">
-      <a class="brand-lockup" href="#home" onclick="navigateTo('home'); return false;" aria-label="VINO، صفحه اصلی">
-        <img src="logo.png" alt="لوگوی VINO" class="nav-logo">
-        <span class="brand-word">VINO</span>
+    <div class="nav-shell">
+      <a class="brand" href="#home" onclick="navigateTo('home');return false;" aria-label="صفحه اصلی VINO">
+        <img src="logo.png" alt="لوگوی VINO">
+        <span class="brand-type"><b>VINO</b><small>PERFUME ATELIER</small></span>
       </a>
-
-      <nav class="main-nav" aria-label="ناوبری اصلی">
-        <a href="#home" class="nav-link active" data-target="home" onclick="navigateTo('home'); return false;">خانه</a>
-        <a href="#shop" class="nav-link" data-target="shop" onclick="navigateTo('shop'); return false;">فروشگاه</a>
-        <a href="#guide" class="nav-link" data-target="guide" onclick="navigateTo('guide'); return false;">راهنمای رایحه</a>
-        <a href="#about" class="nav-link" data-target="about" onclick="navigateTo('about'); return false;">درباره ما</a>
+      <nav class="desktop-nav" aria-label="ناوبری اصلی">
+        <a href="#home" class="nav-link is-active" data-target="home" onclick="navigateTo('home');return false;">خانه</a>
+        <a href="#shop" class="nav-link" data-target="shop" onclick="navigateTo('shop');return false;">مجموعه عطرها</a>
+        <a href="#guide" class="nav-link" data-target="guide" onclick="navigateTo('guide');return false;">راهنمای رایحه</a>
+        <a href="#about" class="nav-link" data-target="about" onclick="navigateTo('about');return false;">داستان VINO</a>
       </nav>
-
-      <div class="nav-actions">
-        <button class="icon-button search-shortcut" type="button" aria-label="جستجوی محصولات" onclick="openShopSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button class="icon-button" type="button" aria-label="علاقه‌مندی‌ها" onclick="toggleWishlistDrawer()">
-          <i class="fa-regular fa-heart"></i><span class="count-badge" id="wishlist-badge">۰</span>
-        </button>
-        <button class="icon-button" type="button" aria-label="سبد خرید" onclick="toggleCart()">
-          <i class="fa-solid fa-bag-shopping"></i><span class="count-badge" id="cart-badge">۰</span>
-        </button>
-        <button class="mobile-menu-button" type="button" aria-label="باز کردن منو" aria-expanded="false" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
+      <div class="nav-tools">
+        <button class="nav-icon" type="button" aria-label="جستجوی عطر" onclick="openShopSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="nav-icon count-control" type="button" aria-label="علاقه‌مندی‌ها" onclick="toggleWishlistDrawer(true)"><i class="fa-regular fa-heart"></i><span id="wishlist-count">۰</span></button>
+        <button class="nav-icon count-control" type="button" aria-label="سبد خرید" onclick="toggleCart(true)"><i class="fa-solid fa-bag-shopping"></i><span id="cart-count">۰</span></button>
+        <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="منوی موبایل">
-      <a href="#home" onclick="navigateTo('home'); return false;">خانه</a>
-      <a href="#shop" onclick="navigateTo('shop'); return false;">فروشگاه</a>
-      <a href="#guide" onclick="navigateTo('guide'); return false;">راهنمای رایحه</a>
-      <a href="#about" onclick="navigateTo('about'); return false;">درباره ما</a>
-      <a href="#contact" onclick="navigateTo('contact'); return false;">تماس با ما</a>
+      <a href="#home" onclick="navigateTo('home');return false;">خانه</a>
+      <a href="#shop" onclick="navigateTo('shop');return false;">مجموعه عطرها</a>
+      <a href="#guide" onclick="navigateTo('guide');return false;">راهنمای رایحه</a>
+      <a href="#about" onclick="navigateTo('about');return false;">داستان VINO</a>
+      <a href="#faq" onclick="navigateTo('faq');return false;">پرسش‌های متداول</a>
+      <a href="#contact" onclick="navigateTo('contact');return false;">تماس با ما</a>
     </nav>
   </header>
 
   <main id="main-content">
     <!-- HOME -->
-    <section class="view-section active" id="home-view" data-view="home">
-      <section class="hero-section">
-        <div class="hero-image" aria-hidden="true"></div>
-        <div class="hero-vignette" aria-hidden="true"></div>
-        <div class="hero-grain" aria-hidden="true"></div>
-        <div class="hero-content container">
-          <div class="eyebrow reveal"><span class="eyebrow-line"></span> THE ART OF PERFUME <span class="eyebrow-line"></span></div>
-          <h1 class="hero-title reveal">عطر، امضای <span>شخصیت شماست</span></h1>
-          <p class="hero-copy typewriter" data-text="در بوتیک VINO به دنیایی از رایحه‌های خاص، ماندگار و الهام‌بخش قدم بگذارید؛ جایی که هر عطر، داستانی برای گفتن دارد."></p>
-          <div class="hero-actions reveal">
-            <button class="button button-gold magnetic" onclick="navigateTo('shop')"><span>کشف مجموعه عطرها</span><i class="fa-solid fa-arrow-left"></i></button>
-            <button class="button button-glass" onclick="navigateTo('guide')"><i class="fa-solid fa-wand-magic-sparkles"></i><span>پیدا کردن رایحه من</span></button>
+    <section class="view-section is-active" id="home-view" data-view="home">
+      <section class="hero">
+        <div class="hero-photo" aria-hidden="true"></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow reveal"><span></span> THE ART OF FINDING YOUR SCENT</div>
+            <h1 class="hero-title reveal">رایحه‌ای برای<br><em>ماندن در خاطر.</em></h1>
+            <p class="hero-description typewriter" data-text="در VINO، عطر را فقط انتخاب نمی‌کنی؛ حال‌وهوا، شخصیت و امضای خودت را پیدا می‌کنی.">در VINO، عطر را فقط انتخاب نمی‌کنی؛ حال‌وهوا، شخصیت و امضای خودت را پیدا می‌کنی.</p>
+            <div class="hero-actions reveal">
+              <button class="button button-dark magnetic" type="button" onclick="navigateTo('shop')">کشف مجموعه <i class="fa-solid fa-arrow-left"></i></button>
+              <button class="button button-ghost" type="button" onclick="navigateTo('guide')"><i class="fa-solid fa-sparkles"></i> راهنمای انتخاب رایحه</button>
+            </div>
+            <div class="hero-meta reveal">
+              <span><i class="fa-solid fa-asterisk"></i> CURATED FRAGRANCES</span>
+              <span>EST. 1398</span>
+            </div>
           </div>
-          <div class="hero-trust reveal">
-            <div><i class="fa-solid fa-gem"></i><span>انتخاب‌های خاص</span></div>
-            <div><i class="fa-solid fa-box-open"></i><span>بسته‌بندی شیک</span></div>
-            <div><i class="fa-solid fa-headset"></i><span>ارتباط با پشتیبانی</span></div>
-          </div>
+          <div class="hero-caption" aria-hidden="true"><span>01</span><i></i><small>SCENT IS A SIGNATURE</small></div>
         </div>
-        <div class="hero-side-note" aria-hidden="true"><span>VINO</span><b>SCENT IS AN IDENTITY</b></div>
-        <a class="scroll-cue" href="#featured" onclick="document.getElementById('featured').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); return false;"><span>اسکرول برای کشف</span><i class="fa-solid fa-arrow-down-long"></i></a>
-        <div class="hero-index" aria-hidden="true">01 <span>/</span> 04</div>
+        <button class="hero-scroll" type="button" onclick="scrollToSection('home-editorial')"><span>برای کشف بیشتر</span><i class="fa-solid fa-arrow-down-long"></i></button>
       </section>
 
-      <div class="brand-marquee" aria-label="برندهای عطر">
-        <div class="marquee-track">
-          <div class="marquee-group"><span>CHANEL</span><i>✦</i><span>DIOR</span><i>✦</i><span>TOM FORD</span><i>✦</i><span>CREED</span><i>✦</i><span>YSL</span><i>✦</i><span>ARMANI</span><i>✦</i><span>GUCCI</span><i>✦</i><span>PRADA</span><i>✦</i></div>
-          <div class="marquee-group" aria-hidden="true"><span>CHANEL</span><i>✦</i><span>DIOR</span><i>✦</i><span>TOM FORD</span><i>✦</i><span>CREED</span><i>✦</i><span>YSL</span><i>✦</i><span>ARMANI</span><i>✦</i><span>GUCCI</span><i>✦</i><span>PRADA</span><i>✦</i></div>
+      <div class="brand-strip" aria-label="برندهای موجود در کاتالوگ">
+        <div class="brand-track">
+          <div class="brand-set"><span>CHANEL</span><i>✳</i><span>DIOR</span><i>✳</i><span>TOM FORD</span><i>✳</i><span>CREED</span><i>✳</i><span>YSL</span><i>✳</i><span>ARMANI</span><i>✳</i><span>GUCCI</span><i>✳</i><span>PRADA</span><i>✳</i></div>
+          <div class="brand-set" aria-hidden="true"><span>CHANEL</span><i>✳</i><span>DIOR</span><i>✳</i><span>TOM FORD</span><i>✳</i><span>CREED</span><i>✳</i><span>YSL</span><i>✳</i><span>ARMANI</span><i>✳</i><span>GUCCI</span><i>✳</i><span>PRADA</span><i>✳</i></div>
         </div>
       </div>
 
-      <section class="section container category-section">
-        <div class="section-heading reveal"><div><span class="section-kicker">CURATED FOR YOU</span><h2>رایحه‌ای برای <em>هر سلیقه</em></h2></div><p>از تازگی روزهای روشن تا عمق شب‌های خاص؛ مسیر رایحه دلخواهت را انتخاب کن.</p></div>
-        <div class="category-grid">
-          <button class="category-card category-men reveal" onclick="setCategoryAndShop('men')"><span class="category-number">01</span><span class="category-label">مجموعه مردانه</span><span class="category-caption">BOLD · DISTINCTIVE</span><i class="fa-solid fa-arrow-left category-arrow"></i></button>
-          <button class="category-card category-women reveal delay-1" onclick="setCategoryAndShop('women')"><span class="category-number">02</span><span class="category-label">مجموعه زنانه</span><span class="category-caption">ELEGANT · TIMELESS</span><i class="fa-solid fa-arrow-left category-arrow"></i></button>
-          <button class="category-card category-unisex reveal delay-2" onclick="setCategoryAndShop('unisex')"><span class="category-number">03</span><span class="category-label">مجموعه یونیسکس</span><span class="category-caption">UNIQUE · UNIVERSAL</span><i class="fa-solid fa-arrow-left category-arrow"></i></button>
+      <section class="section container category-section" id="home-editorial">
+        <div class="section-top reveal">
+          <div><span class="kicker">EXPLORE BY MOOD</span><h2>از حال‌وهوایت<br><em>شروع کن.</em></h2></div>
+          <p>گاهی یک رایحه خنک، گاهی گرمای چوب و ادویه. مسیر انتخاب را از احساسی که دوست داری آغاز کن.</p>
+        </div>
+        <div class="category-cards">
+          <button class="category-tile tile-men reveal" type="button" onclick="setCategoryAndShop('men')"><span class="tile-index">01 / COLLECTION</span><strong>مردانه</strong><small>CONFIDENT · DISTINCTIVE</small><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="category-tile tile-women reveal delay-1" type="button" onclick="setCategoryAndShop('women')"><span class="tile-index">02 / COLLECTION</span><strong>زنانه</strong><small>RADIANT · TIMELESS</small><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="category-tile tile-unisex reveal delay-2" type="button" onclick="setCategoryAndShop('unisex')"><span class="tile-index">03 / COLLECTION</span><strong>یونیسکس</strong><small>UNIQUE · UNBOUND</small><i class="fa-solid fa-arrow-left"></i></button>
         </div>
       </section>
 
-      <section class="section featured-section" id="featured">
+      <section class="section featured-section">
         <div class="container">
-          <div class="section-heading reveal"><div><span class="section-kicker">THE VINO SELECTION</span><h2>انتخاب‌های <em>ویژه VINO</em></h2></div><button class="text-link" onclick="navigateTo('shop')">مشاهده همه محصولات <i class="fa-solid fa-arrow-left"></i></button></div>
-          <div class="products-grid" id="featured-products"></div>
-        </div>
-      </section>
-
-      <section class="editorial-band">
-        <div class="editorial-image" aria-hidden="true"></div>
-        <div class="editorial-overlay"></div>
-        <div class="editorial-content container reveal"><span class="section-kicker">MORE THAN A SCENT</span><h2>بعضی رایحه‌ها<br><em>فراموش نمی‌شوند.</em></h2><p>عطر فقط یک انتخاب روزمره نیست؛ بخشی از حضوری است که از شما در ذهن‌ها باقی می‌ماند.</p><button class="button button-gold" onclick="navigateTo('guide')">راهنمای انتخاب عطر <i class="fa-solid fa-arrow-left"></i></button></div>
-      </section>
-
-      <section class="section container why-section">
-        <div class="section-heading centered reveal"><div><span class="section-kicker">THE VINO PROMISE</span><h2>تجربه خریدی با <em>جزئیات بیشتر</em></h2></div><p>از انتخاب رایحه تا دریافت سفارش، جزئیات تجربه VINO اهمیت دارند.</p></div>
-        <div class="promise-grid">
-          <article class="promise-card reveal"><div class="promise-icon"><i class="fa-solid fa-shield-heart"></i></div><h3>توجه به اصالت</h3><p>اطلاعات و شرایط هر محصول را پیش از خرید بررسی کنید و برای جزئیات بیشتر با پشتیبانی در ارتباط باشید.</p><span>01</span></article>
-          <article class="promise-card reveal delay-1"><div class="promise-icon"><i class="fa-solid fa-box-open"></i></div><h3>بسته‌بندی با سلیقه</h3><p>تجربه باز کردن یک عطر خاص، بخشی از لذت انتخاب و هدیه دادن آن است.</p><span>02</span></article>
-          <article class="promise-card reveal delay-2"><div class="promise-icon"><i class="fa-solid fa-comments"></i></div><h3>پشتیبانی و راهنمایی</h3><p>برای پرسش درباره موجودی، قیمت نهایی، ارسال و انتخاب رایحه با کانال‌های ارتباطی VINO پیام بدهید.</p><span>03</span></article>
-        </div>
-      </section>
-
-      <section class="section testimonials-section">
-        <div class="container">
-          <div class="section-heading centered reveal"><div><span class="section-kicker">KIND WORDS</span><h2>تجربه مشتریان</h2></div><p>نمونه متن‌های نمایشی؛ پیش از انتشار عمومی، آن‌ها را با نظرهای واقعی مشتریان جایگزین کنید.</p></div>
-          <div class="testimonials-grid">
-            <article class="testimonial-card reveal tilt-card"><span class="quote-mark">“</span><p>بسته‌بندی شیک و توجه به جزئیات، تجربه خرید عطر را برای من دلنشین‌تر کرد.</p><div class="testimonial-foot"><span class="avatar">ع</span><div><b>بازخورد نمونه</b><small>تجربه خرید VINO</small></div><span class="stars">★★★★★</span></div></article>
-            <article class="testimonial-card reveal delay-1 tilt-card"><span class="quote-mark">“</span><p>برای انتخاب رایحه مناسب، توضیحات محصول و راهنمایی فروشگاه کمک‌کننده بود.</p><div class="testimonial-foot"><span class="avatar">س</span><div><b>بازخورد نمونه</b><small>تجربه خرید VINO</small></div><span class="stars">★★★★★</span></div></article>
-            <article class="testimonial-card reveal delay-2 tilt-card"><span class="quote-mark">“</span><p>طراحی مرتب و امکان مقایسه محصولات، پیدا کردن عطر موردعلاقه را راحت‌تر کرد.</p><div class="testimonial-foot"><span class="avatar">م</span><div><b>بازخورد نمونه</b><small>تجربه خرید VINO</small></div><span class="stars">★★★★★</span></div></article>
+          <div class="section-top reveal">
+            <div><span class="kicker">THE VINO EDIT</span><h2>انتخاب‌های <em>ویژه</em></h2></div>
+            <button class="inline-link" type="button" onclick="navigateTo('shop')">دیدن تمام عطرها <i class="fa-solid fa-arrow-left"></i></button>
           </div>
+          <div class="product-grid" id="featured-products"></div>
         </div>
       </section>
 
-      <section class="social-cta container reveal">
-        <div><span class="section-kicker">STAY CLOSE TO VINO</span><h2>برای خبرهای تازه و راهنمایی، <em>همراه ما باش.</em></h2><p>از طریق کانال‌های رسمی VINO پیام بده و درباره محصولات و سفارش‌ها سؤال کن.</p></div>
-        <div class="social-cta-actions"><a class="button button-telegram" href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> کانال تلگرام</a><a class="button button-bale" href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-comment-dots"></i> کانال بله</a></div>
+      <section class="manifesto-band">
+        <div class="manifesto-image" aria-hidden="true"></div>
+        <div class="manifesto-wash" aria-hidden="true"></div>
+        <div class="container manifesto-content reveal">
+          <span class="kicker">MORE THAN A SCENT</span>
+          <h2>اثرِ یک حضور،<br><em>بعد از رفتن می‌ماند.</em></h2>
+          <p>رایحه می‌تواند خاطره بسازد؛ انتخابش را به یک تجربه آگاهانه و لذت‌بخش تبدیل کن.</p>
+          <button class="button button-light" type="button" onclick="navigateTo('guide')">راهنمای شناخت نت‌ها <i class="fa-solid fa-arrow-left"></i></button>
+        </div>
+      </section>
+
+      <section class="section container value-section">
+        <div class="section-top centered reveal">
+          <div><span class="kicker">THE VINO EXPERIENCE</span><h2>جزئیاتی که <em>مهم‌اند</em></h2></div>
+          <p>انتخاب دقیق‌تر، با اطلاعات روشن‌تر و ارتباط مستقیم.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card reveal"><span class="value-number">01</span><div class="value-icon"><i class="fa-solid fa-magnifying-glass"></i></div><h3>شناخت قبل از انتخاب</h3><p>خانواده بویایی و نت‌های شاخص هر عطر را بررسی کن تا انتخاب با سلیقه‌ات هماهنگ‌تر باشد.</p></article>
+          <article class="value-card reveal delay-1"><span class="value-number">02</span><div class="value-icon"><i class="fa-solid fa-message"></i></div><h3>ارتباط مستقیم</h3><p>برای تأیید نسخه، حجم، موجودی، قیمت و شرایط ارسال با کانال‌های رسمی VINO هماهنگ شو.</p></article>
+          <article class="value-card reveal delay-2"><span class="value-number">03</span><div class="value-icon"><i class="fa-solid fa-heart"></i></div><h3>انتخاب شخصی</h3><p>محصولات موردعلاقه‌ات را ذخیره کن و هر زمان خواستی به فهرست انتخاب‌ها برگرد.</p></article>
+        </div>
+      </section>
+
+      <section class="section testimonial-section">
+        <div class="container testimonial-layout">
+          <div class="testimonial-heading reveal"><span class="kicker">A NOTE FROM VINO</span><h2>خرید عطر،<br><em>یک انتخاب شخصی است.</em></h2><p>به‌جای امتیازها و نظرهای ساختگی، تجربه واقعی خریداران را پس از ثبت و تأیید می‌توان به این بخش اضافه کرد.</p></div>
+          <div class="testimonial-quote reveal delay-1"><span class="quote-mark">“</span><p>بهترین عطر، عطری نیست که همه دوستش داشته باشند؛ عطری است که وقتی تو را به یاد می‌آورند، آن را هم به خاطر بیاورند.</p><small>VINO / PERFUME ATELIER</small></div>
+        </div>
+      </section>
+
+      <section class="container social-banner reveal">
+        <div><span class="kicker">STAY IN TOUCH</span><h2>برای مشاوره و سفارش، <em>با ما در ارتباط باش.</em></h2><p>نسخه، حجم، موجودی و قیمت نهایی را مستقیم از کانال‌های رسمی استعلام کن.</p></div>
+        <div class="social-actions">
+          <a class="social-button telegram-button" href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i><span>کانال تلگرام</span><i class="fa-solid fa-arrow-up-left-from-circle"></i></a>
+          <a class="social-button bale-button" href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-comment-dots"></i><span>کانال بله</span><i class="fa-solid fa-arrow-up-left-from-circle"></i></a>
+        </div>
       </section>
     </section>
 
     <!-- SHOP -->
     <section class="view-section" id="shop-view" data-view="shop">
-      <div class="page-hero container"><span class="section-kicker reveal">DISCOVER YOUR SIGNATURE</span><h1 class="reveal">بوتیک <em>عطر VINO</em></h1><p class="reveal">مجموعه را جستجو کن، فیلترها را تغییر بده و رایحه موردعلاقه‌ات را پیدا کن.</p></div>
-      <div class="container shop-layout">
-        <div class="shop-toolbar reveal">
-          <label class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input id="search-input" type="search" placeholder="نام عطر یا برند را جستجو کن..." autocomplete="off"><kbd>⌕</kbd></label>
-          <div class="filter-row">
-            <select id="category-filter" aria-label="فیلتر جنسیت"><option value="all">همه گروه‌ها</option><option value="men">مردانه</option><option value="women">زنانه</option><option value="unisex">یونیسکس</option></select>
-            <select id="brand-filter" aria-label="فیلتر برند"><option value="all">همه برندها</option></select>
-            <label class="price-filter"><span>از</span><input id="price-min" type="number" min="0" inputmode="numeric" placeholder="حداقل"></label>
-            <label class="price-filter"><span>تا</span><input id="price-max" type="number" min="0" inputmode="numeric" placeholder="حداکثر"></label>
-            <select id="sort-filter" aria-label="مرتب‌سازی"><option value="default">پیشنهادی</option><option value="price-asc">قیمت: کم به زیاد</option><option value="price-desc">قیمت: زیاد به کم</option><option value="rating">بیشترین امتیاز</option><option value="name">نام محصول</option></select>
-            <button class="clear-filters" id="clear-filters" type="button" onclick="clearFilters()"><i class="fa-solid fa-rotate-left"></i> پاک‌کردن</button>
+      <div class="page-intro container">
+        <span class="kicker reveal">THE FRAGRANCE LIBRARY</span>
+        <h1 class="reveal">مجموعه <em>VINO</em></h1>
+        <p class="reveal">جستجو کن، مقایسه کن و با شناخت بهتر رایحه موردنظرت را پیدا کن.</p>
+      </div>
+      <div class="container shop-area">
+        <div class="shop-panel reveal">
+          <label class="search-control"><i class="fa-solid fa-magnifying-glass"></i><input id="search-input" type="search" placeholder="نام عطر، برند یا نت شاخص..." autocomplete="off"><kbd>⌕</kbd></label>
+          <div class="filter-controls">
+            <label><span>گروه</span><select id="category-filter"><option value="all">همه گروه‌ها</option><option value="men">مردانه</option><option value="women">زنانه</option><option value="unisex">یونیسکس</option></select></label>
+            <label><span>برند</span><select id="brand-filter"><option value="all">همه برندها</option></select></label>
+            <label><span>از قیمت</span><input id="price-min" type="number" min="0" inputmode="numeric" placeholder="حداقل تومان"></label>
+            <label><span>تا قیمت</span><input id="price-max" type="number" min="0" inputmode="numeric" placeholder="حداکثر تومان"></label>
+            <label><span>مرتب‌سازی</span><select id="sort-filter"><option value="featured">منتخب VINO</option><option value="price-asc">ارزان‌تر</option><option value="price-desc">گران‌تر</option><option value="name">نام محصول</option></select></label>
+            <button class="clear-button" type="button" onclick="clearFilters()"><i class="fa-solid fa-rotate-left"></i> پاک‌کردن</button>
           </div>
-          <div class="result-meta"><span id="results-count">۱۲ محصول</span><span>قیمت‌ها و موجودی نهایی را پیش از سفارش از پشتیبانی استعلام کنید.</span></div>
+          <div class="shop-meta"><span id="results-count">۱۲ عطر</span><small>قیمت‌های نمایش‌داده‌شده از فهرست اولیه هستند و باید پیش از سفارش تأیید شوند.</small></div>
         </div>
-        <div class="products-grid shop-products" id="all-products"></div>
-        <div class="empty-state" id="no-results" hidden><i class="fa-solid fa-wand-magic-sparkles"></i><h2>چیزی پیدا نشد</h2><p>عبارت جستجو یا فیلترها را تغییر بده.</p><button class="button button-gold" onclick="clearFilters()">نمایش همه محصولات</button></div>
+        <div class="product-grid" id="all-products"></div>
+        <div class="empty-state" id="no-results" hidden><i class="fa-solid fa-wind"></i><h2>عطری با این مشخصات پیدا نشد.</h2><p>نام یا فیلترها را تغییر بده.</p><button class="button button-dark" onclick="clearFilters()">نمایش همه محصولات</button></div>
       </div>
     </section>
 
     <!-- PRODUCT DETAIL -->
     <section class="view-section" id="product-view" data-view="product">
       <div class="container detail-page">
-        <button class="back-link" type="button" onclick="navigateTo('shop')"><i class="fa-solid fa-arrow-right"></i> بازگشت به فروشگاه</button>
-        <div id="product-details" class="product-detail-shell"></div>
-        <section class="related-section"><div class="section-heading"><div><span class="section-kicker">YOU MAY ALSO LIKE</span><h2>شاید این‌ها را هم <em>بپسندی</em></h2></div></div><div class="products-grid" id="related-products"></div></section>
+        <button class="back-link" type="button" onclick="navigateTo('shop')"><i class="fa-solid fa-arrow-right"></i> بازگشت به مجموعه</button>
+        <div id="product-details"></div>
+        <section class="related-section">
+          <div class="section-top"><div><span class="kicker">DISCOVER MORE</span><h2>شاید این‌ها هم <em>سلیقه تو باشند</em></h2></div></div>
+          <div class="product-grid" id="related-products"></div>
+        </section>
       </div>
     </section>
 
     <!-- GUIDE -->
     <section class="view-section" id="guide-view" data-view="guide">
-      <div class="page-hero container"><span class="section-kicker reveal">FIND YOUR NOTES</span><h1 class="reveal">راهنمای انتخاب <em>رایحه</em></h1><p class="reveal">برای شروع، حال‌وهوایی را که دوست داری انتخاب کن؛ سپس محصولات مرتبط را ببین.</p></div>
-      <div class="container guide-grid">
-        <button class="guide-card guide-fresh reveal" onclick="filterByMood('fresh')"><span class="guide-symbol"><i class="fa-solid fa-water"></i></span><span class="section-kicker">FRESH & AQUATIC</span><h2>خنک و باطراوت</h2><p>برای حس تازگی، انرژی و استفاده روزمره.</p><b>مشاهده پیشنهادها <i class="fa-solid fa-arrow-left"></i></b></button>
-        <button class="guide-card guide-warm reveal delay-1" onclick="filterByMood('warm')"><span class="guide-symbol"><i class="fa-solid fa-fire-flame-curved"></i></span><span class="section-kicker">WARM & WOODY</span><h2>گرم و چوبی</h2><p>برای حال‌وهوای عمیق، رسمی و شبانه.</p><b>مشاهده پیشنهادها <i class="fa-solid fa-arrow-left"></i></b></button>
-        <button class="guide-card guide-sweet reveal delay-2" onclick="filterByMood('sweet')"><span class="guide-symbol"><i class="fa-solid fa-spa"></i></span><span class="section-kicker">SWEET & FLORAL</span><h2>شیرین و گلی</h2><p>برای رایحه‌های لطیف، دلنشین و پرشخصیت.</p><b>مشاهده پیشنهادها <i class="fa-solid fa-arrow-left"></i></b></button>
+      <div class="page-intro container"><span class="kicker reveal">A GUIDE TO SCENT</span><h1 class="reveal">زبان <em>رایحه‌ها</em></h1><p class="reveal">برای انتخاب بهتر، از خانواده بویایی و حال‌وهوایی که دوست داری شروع کن.</p></div>
+      <div class="container guide-layout">
+        <div class="guide-cards">
+          <button class="guide-card fresh-guide reveal" onclick="filterByMood('fresh')"><span>01 / FRESH</span><i class="fa-solid fa-water"></i><h2>خنک و شفاف</h2><p>آکوردهای مرکباتی، دریایی و آروماتیک؛ مناسب کسانی که حس تمیزی و طراوت را می‌پسندند.</p><b>دیدن پیشنهادها <i class="fa-solid fa-arrow-left"></i></b></button>
+          <button class="guide-card woody-guide reveal delay-1" onclick="filterByMood('woody')"><span>02 / WOODY</span><i class="fa-solid fa-tree"></i><h2>چوبی و عمیق</h2><p>سدر، عود، چوب صندل و وتیور؛ با حسی گرم، آرام و ساختارمند.</p><b>دیدن پیشنهادها <i class="fa-solid fa-arrow-left"></i></b></button>
+          <button class="guide-card warm-guide reveal delay-2" onclick="filterByMood('warm')"><span>03 / AMBER</span><i class="fa-solid fa-fire-flame-curved"></i><h2>گرم و ادویه‌ای</h2><p>ادویه‌ها، عنبر و نت‌های شیرین؛ برای دوست‌داران رایحه‌های پرعمق.</p><b>دیدن پیشنهادها <i class="fa-solid fa-arrow-left"></i></b></button>
+          <button class="guide-card floral-guide reveal delay-3" onclick="filterByMood('floral')"><span>04 / FLORAL</span><i class="fa-solid fa-spa"></i><h2>گلی و لطیف</h2><p>گل یاس، شکوفه پرتقال و آکوردهای گلی؛ با فضایی روشن و ظریف.</p><b>دیدن پیشنهادها <i class="fa-solid fa-arrow-left"></i></b></button>
+        </div>
+        <aside class="guide-aside reveal">
+          <span class="kicker">A PERFUME NOTE</span>
+          <h2>هر عطر،<br><em>در زمان تغییر می‌کند.</em></h2>
+          <p><b>نت آغازین</b> اولین برداشت از رایحه است. <b>نت میانی</b> شخصیت اصلی را شکل می‌دهد و <b>نت پایه</b> در ادامه روی پوست باقی می‌ماند. ترتیب و شدت تجربه‌شده ممکن است با پوست، هوا و نسخه عطر تفاوت داشته باشد.</p>
+          <div class="note-stack">
+            <div><span>TOP</span><b>شروع رایحه</b><i></i></div>
+            <div><span>HEART</span><b>قلب رایحه</b><i></i></div>
+            <div><span>BASE</span><b>پایان و عمق</b><i></i></div>
+          </div>
+          <small>این توضیح آموزشی عمومی است؛ ساختار دقیق هر محصول در صفحه خودش آمده است.</small>
+        </aside>
       </div>
-      <div class="container guide-note reveal"><i class="fa-solid fa-circle-info"></i><p>این راهنما یک نقطه شروع بر اساس توضیحات موجود در کاتالوگ است؛ برداشت از رایحه شخصی است. برای انتخاب دقیق‌تر، توضیحات هر محصول و مشاوره فروشگاه را بررسی کن.</p></div>
-      <div class="container guide-steps"><div class="section-heading centered"><div><span class="section-kicker">A LITTLE GUIDANCE</span><h2>سه نکته پیش از <em>انتخاب عطر</em></h2></div></div><div class="steps-grid"><article class="step-card reveal"><span>01</span><h3>موقعیت استفاده</h3><p>مشخص کن عطر را برای روزمره، محل کار، مهمانی یا هدیه می‌خواهی.</p></article><article class="step-card reveal delay-1"><span>02</span><h3>حال‌وهوای رایحه</h3><p>خنک، گرم، چوبی، شیرین یا گلی؛ اولویتت را بشناس.</p></article><article class="step-card reveal delay-2"><span>03</span><h3>بررسی جزئیات</h3><p>حجم، نسخه، اصالت، قیمت و موجودی را پیش از نهایی کردن سفارش بررسی کن.</p></article></div></div>
     </section>
 
     <!-- ABOUT -->
     <section class="view-section" id="about-view" data-view="about">
-      <div class="page-hero container"><span class="section-kicker reveal">THE STORY BEHIND THE SCENT</span><h1 class="reveal">داستان <em>VINO</em></h1><p class="reveal">عطر، جزئی کوچک با اثری ماندگار در خاطره‌هاست.</p></div>
+      <div class="page-intro container"><span class="kicker reveal">THE STORY OF VINO</span><h1 class="reveal">داستان <em>یک امضا</em></h1><p class="reveal">نگاهی شخصی به دنیای عطر، انتخاب و خاطره.</p></div>
       <div class="container about-layout">
-        <div class="about-visual reveal tilt-card"><div class="about-image-glow"></div><img src="images.png" alt="تصویر اختصاصی VINO" class="about-main-image" loading="lazy"><div class="image-caption">VINO · PERFUME ATELIER</div></div>
-        <div class="about-copy reveal delay-1"><span class="section-kicker">OUR PHILOSOPHY</span><h2>هر رایحه، <em>یک امضا</em></h2><p>در دنیای عطرها، ما در VINO به دنبال تجربه‌ای فراتر از انتخاب یک شیشه عطر هستیم. باور داریم رایحه می‌تواند بخشی از استایل و خاطرات شخصی هر فرد باشد.</p><p>هدف این بوتیک، گردآوری انتخاب‌هایی از دنیای عطر و فراهم کردن تجربه‌ای روشن‌تر برای بررسی، مقایسه و انتخاب است. برای جزئیات موجودی، شرایط ارسال و مشاوره، از راه‌های ارتباطی رسمی استفاده کن.</p><div class="about-values"><div><i class="fa-solid fa-gem"></i><span>انتخاب با سلیقه</span></div><div><i class="fa-solid fa-message"></i><span>ارتباط مستقیم</span></div><div><i class="fa-solid fa-heart"></i><span>توجه به تجربه خرید</span></div></div></div>
+        <div class="about-photo reveal"><span class="photo-frame"></span><img src="images.png" alt="تصویر اختصاصی VINO" loading="lazy"><small>VINO / PERFUME ATELIER</small></div>
+        <div class="about-text reveal delay-1">
+          <span class="kicker">OUR PHILOSOPHY</span>
+          <h2>ما به رایحه‌ای باور داریم که <em>شخصی باشد.</em></h2>
+          <p>در دنیای پر از انتخاب عطر، VINO می‌خواهد مسیر کشف رایحه را روشن‌تر و لذت‌بخش‌تر کند. عطر می‌تواند بخشی از استایل، حال‌وهوا و خاطره شخصی باشد؛ برای همین شناخت جزئیات آن پیش از انتخاب اهمیت دارد.</p>
+          <p>این فروشگاه آنلاین کاتالوگی برای بررسی محصولات، مقایسه خانواده‌های بویایی و آماده‌سازی درخواست سفارش است. برای تأیید اصالت، نسخه، حجم، موجودی و قیمت نهایی، پیش از پرداخت با پشتیبانی VINO هماهنگ شو.</p>
+          <div class="about-points"><span><i class="fa-solid fa-check"></i> انتخاب آگاهانه</span><span><i class="fa-solid fa-check"></i> اطلاعات روشن</span><span><i class="fa-solid fa-check"></i> ارتباط مستقیم</span></div>
+          <div class="about-social">
+            <a href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> تلگرام VINO</a>
+            <a href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-comment-dots"></i> بله VINO</a>
+          </div>
+        </div>
       </div>
-      <div class="container about-timeline"><div class="section-heading centered"><div><span class="section-kicker">THE JOURNEY</span><h2>مسیر <em>VINO</em></h2></div></div><div class="timeline-row"><article class="timeline-card reveal"><b>۱۳۹۸</b><h3>شروع مسیر</h3><p>آغاز مسیر VINO با علاقه به دنیای عطر و رایحه.</p></article><article class="timeline-card reveal delay-1"><b>۱۴۰۰</b><h3>گسترش ارتباط</h3><p>توسعه ارتباط با مخاطبان و گسترش مسیر فروش.</p></article><article class="timeline-card reveal delay-2"><b>۱۴۰۵</b><h3>تجربه آنلاین</h3><p>ساخت تجربه‌ای تازه برای کشف و بررسی محصولات VINO.</p></article></div></div>
+      <div class="container story-timeline">
+        <div class="section-top centered"><div><span class="kicker">THE JOURNEY</span><h2>چند فصل از <em>مسیر VINO</em></h2></div></div>
+        <div class="timeline">
+          <article class="timeline-item reveal"><b>۱۳۹۸</b><h3>شروع علاقه</h3><p>آغاز مسیر با علاقه به دنیای عطر و رایحه.</p></article>
+          <article class="timeline-item reveal delay-1"><b>۱۴۰۰</b><h3>گسترش ارتباط</h3><p>توسعه ارتباط با مخاطبان و گسترش مسیر فروش.</p></article>
+          <article class="timeline-item reveal delay-2"><b>۱۴۰۵</b><h3>تجربه دیجیتال</h3><p>ساخت بستری برای کشف، بررسی و انتخاب محصولات VINO.</p></article>
+        </div>
+      </div>
     </section>
 
     <!-- FAQ -->
     <section class="view-section" id="faq-view" data-view="faq">
-      <div class="page-hero container"><span class="section-kicker reveal">WE ARE HERE TO HELP</span><h1 class="reveal">پرسش‌های <em>متداول</em></h1><p class="reveal">پاسخ پرسش‌های رایج درباره انتخاب، سفارش و ارتباط با VINO.</p></div>
+      <div class="page-intro container"><span class="kicker reveal">HELP CENTER</span><h1 class="reveal">پرسش‌های <em>متداول</em></h1><p class="reveal">پاسخ پرسش‌های رایج درباره محصولات و روند سفارش.</p></div>
       <div class="container faq-list">
-        <details class="faq-item reveal"><summary>چطور از موجودی و قیمت روز محصول مطلع شوم؟<i class="fa-solid fa-plus"></i></summary><p>برای اطمینان از موجودی، نسخه و قیمت نهایی، پیش از پرداخت از طریق کانال تلگرام یا بله با VINO هماهنگ کن.</p></details>
-        <details class="faq-item reveal"><summary>آیا می‌توانم محصولی را به علاقه‌مندی‌ها اضافه کنم؟<i class="fa-solid fa-plus"></i></summary><p>بله. روی آیکون قلب کارت محصول بزن. فهرست علاقه‌مندی‌ها در همین مرورگر ذخیره می‌شود.</p></details>
-        <details class="faq-item reveal"><summary>کد تخفیف VINO20 چگونه کار می‌کند؟<i class="fa-solid fa-plus"></i></summary><p>در سبد خرید کد VINO20 را وارد کن. تخفیف ۲۰ درصدی در جمع مبلغ محصولات محاسبه می‌شود. شرایط نهایی تخفیف باید هنگام هماهنگی سفارش تأیید شود.</p></details>
-        <details class="faq-item reveal"><summary>هزینه و زمان ارسال چقدر است؟<i class="fa-solid fa-plus"></i></summary><p>هزینه و زمان ارسال به مقصد و شرایط سفارش بستگی دارد؛ مبلغ و زمان دقیق را پیش از نهایی کردن سفارش از پشتیبانی استعلام کن.</p></details>
-        <details class="faq-item reveal"><summary>آیا پرداخت آنلاین در سایت فعال است؟<i class="fa-solid fa-plus"></i></summary><p>در نسخه فعلی درگاه پرداخت و سرور ثبت سفارش متصل نیست. فرم سایت فقط پیش‌نویس سفارش را آماده می‌کند و برای ادامه باید با پشتیبانی هماهنگ کنی.</p></details>
-        <details class="faq-item reveal"><summary>چطور برای انتخاب عطر مشاوره بگیرم؟<i class="fa-solid fa-plus"></i></summary><p>از طریق کانال‌های ارتباطی VINO پیام بده و سلیقه، موقعیت استفاده و رایحه‌های موردعلاقه‌ات را توضیح بده.</p></details>
+        <details class="faq-item reveal"><summary>آیا قیمت‌ها و موجودی محصولات قطعی است؟<i class="fa-solid fa-plus"></i></summary><p>قیمت‌های فعلی از فهرست اولیه سایت آمده‌اند و قیمت لحظه‌ای یا تضمین موجودی نیستند. نسخه، حجم، موجودی و قیمت نهایی را پیش از پرداخت از پشتیبانی استعلام کن.</p></details>
+        <details class="faq-item reveal"><summary>اطلاعات نت‌های عطر از کجا آمده‌اند؟<i class="fa-solid fa-plus"></i></summary><p>نت‌ها و توصیف‌های درج‌شده بر اساس معرفی برندها و صفحات رسمی محصول تنظیم شده‌اند. بعضی عطرها نسخه‌های مختلف دارند؛ برای تطبیق دقیق، نام نسخه و بسته‌بندی کالای قابل ارائه را تأیید کن.</p></details>
+        <details class="faq-item reveal"><summary>چطور سفارش خود را ثبت کنم؟<i class="fa-solid fa-plus"></i></summary><p>محصول را به سبد اضافه کن و فرم آماده‌سازی سفارش را تکمیل کن. سایت متن درخواست را برای کپی آماده می‌کند؛ سپس آن را در تلگرام یا بله برای پشتیبانی ارسال کن.</p></details>
+        <details class="faq-item reveal"><summary>آیا پرداخت آنلاین در سایت فعال است؟<i class="fa-solid fa-plus"></i></summary><p>خیر. در این نسخه درگاه بانکی و سرور سفارش متصل نیست. تا زمان اتصال زیرساخت امن پرداخت، هیچ پرداختی داخل سایت انجام نمی‌شود.</p></details>
+        <details class="faq-item reveal"><summary>کد تخفیف VINO20 چه مقدار تخفیف دارد؟<i class="fa-solid fa-plus"></i></summary><p>در محاسبه سبد خرید، کد VINO20 بیست درصد از جمع محصولات کم می‌کند. اعمال نهایی این کد در سفارش واقعی باید توسط فروشگاه تأیید شود.</p></details>
+        <details class="faq-item reveal"><summary>ماندگاری و پخش بوی عطر چقدر است؟<i class="fa-solid fa-plus"></i></summary><p>ماندگاری و پخش بو به نسخه، پوست، آب‌وهوا، محل استفاده و مقدار اسپری بستگی دارد. به همین دلیل در این کاتالوگ عدد قطعی یا تضمین ساعتی درج نمی‌شود.</p></details>
+        <details class="faq-item reveal"><summary>هزینه و زمان ارسال چگونه محاسبه می‌شود؟<i class="fa-solid fa-plus"></i></summary><p>هزینه و زمان ارسال در این نسخه از سایت محاسبه نمی‌شود و باید با توجه به مقصد و شرایط سفارش از پشتیبانی استعلام شود.</p></details>
       </div>
     </section>
 
-    <!-- SHIPPING / RETURNS -->
+    <!-- SHIPPING -->
     <section class="view-section" id="shipping-view" data-view="shipping">
-      <div class="page-hero container"><span class="section-kicker reveal">DELIVERY & CARE</span><h1 class="reveal">ارسال و <em>پیگیری سفارش</em></h1><p class="reveal">پیش از پرداخت، جزئیات سفارش و ارسال را با پشتیبانی هماهنگ کن.</p></div>
-      <div class="container policy-grid"><article class="policy-card reveal"><i class="fa-solid fa-truck-fast"></i><h2>روش و هزینه ارسال</h2><p>روش ارسال، هزینه و زمان تحویل با توجه به شهر مقصد و شرایط سفارش تعیین می‌شود. اطلاعات قطعی را از پشتیبانی دریافت کن.</p></article><article class="policy-card reveal delay-1"><i class="fa-solid fa-box-open"></i><h2>هنگام دریافت کالا</h2><p>هنگام تحویل، بسته‌بندی و مشخصات محصول را بررسی کن. در صورت مشاهده مغایرت یا آسیب، موضوع را سریع با پشتیبانی در میان بگذار.</p></article><article class="policy-card reveal delay-2"><i class="fa-solid fa-arrow-rotate-right"></i><h2>شرایط مرجوعی</h2><p>شرایط بازگشت کالا باید پیش از خرید از فروشگاه استعلام شود. به دلیل ماهیت محصولات عطری، از باز کردن پلمب پیش از هماهنگی خودداری کن.</p></article></div>
-      <div class="container policy-callout reveal"><h2>سؤالی درباره ارسال داری؟</h2><p>از طریق کانال‌های رسمی پیام بده تا جزئیات سفارش را هماهنگ کنی.</p><div class="social-cta-actions"><a class="button button-telegram" href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> تلگرام</a><a class="button button-bale" href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-comment-dots"></i> بله</a></div></div>
+      <div class="page-intro container"><span class="kicker reveal">DELIVERY & RETURNS</span><h1 class="reveal">ارسال و <em>پیگیری سفارش</em></h1><p class="reveal">اطلاعات شفاف برای هماهنگی پیش از خرید.</p></div>
+      <div class="container policy-layout">
+        <article class="policy-card reveal"><span>01</span><i class="fa-solid fa-box"></i><h2>تأیید سفارش</h2><p>پس از ارسال متن درخواست، پشتیبانی باید نام دقیق محصول، نسخه، حجم، قیمت نهایی و موجودی را تأیید کند. تا پیش از این تأیید، سفارش قطعی محسوب نمی‌شود.</p></article>
+        <article class="policy-card reveal delay-1"><span>02</span><i class="fa-solid fa-truck-fast"></i><h2>هزینه و زمان ارسال</h2><p>هزینه، روش و زمان ارسال با توجه به شهر مقصد و روش ارسال انتخابی تعیین می‌شود. مبلغ نهایی باید قبل از پرداخت به خریدار اعلام شود.</p></article>
+        <article class="policy-card reveal delay-2"><span>03</span><i class="fa-solid fa-rotate-left"></i><h2>مرجوعی و پیگیری</h2><p>شرایط مرجوعی، کالاهای قابل بازگشت، مهلت اعلام مغایرت و روش پیگیری باید پیش از خرید توسط فروشگاه به‌صورت مکتوب اعلام شود. این صفحه جایگزین سیاست رسمی فروشگاه نیست.</p></article>
+      </div>
+      <div class="container policy-note reveal"><i class="fa-solid fa-circle-info"></i><p><b>برای انتشار تجاری:</b> لطفاً قبل از فعال‌کردن دریافت سفارش، نشانی فرستنده، شرکت حمل، تعرفه، زمان تحویل، شرایط بازگشت و راه تماس پشتیبانی را با اطلاعات واقعی کسب‌وکار تکمیل کن.</p></div>
     </section>
 
     <!-- PRIVACY -->
     <section class="view-section" id="privacy-view" data-view="privacy">
-      <div class="page-hero container"><span class="section-kicker reveal">YOUR PRIVACY MATTERS</span><h1 class="reveal">حریم <em>خصوصی</em></h1><p class="reveal">اطلاعاتی درباره داده‌هایی که در این نسخه از سایت نگهداری می‌شوند.</p></div>
-      <div class="container text-policy reveal"><h2>ذخیره‌سازی در مرورگر</h2><p>سبد خرید و فهرست علاقه‌مندی‌ها با استفاده از localStorage در مرورگر همین دستگاه ذخیره می‌شوند تا با بستن و باز کردن دوباره سایت باقی بمانند. این اطلاعات به‌صورت خودکار به سرور VINO ارسال نمی‌شوند.</p><h2>اطلاعات فرم سفارش</h2><p>در نسخه فعلی، فرم سفارش به سامانه یا سرور متصل نیست. اطلاعات واردشده برای ثبت سفارش واقعی ارسال یا ذخیره نمی‌شوند. اطلاعات حساس یا بانکی را در این نسخه وارد نکن.</p><h2>پیوندهای بیرونی</h2><p>پیوندهای تلگرام و بله به سرویس‌های بیرونی می‌روند و استفاده از آن‌ها تابع سیاست‌های همان سرویس‌هاست.</p><h2>به‌روزرسانی این متن</h2><p>با اضافه شدن درگاه پرداخت، حساب کاربری یا سامانه سفارش، این صفحه باید متناسب با شیوه واقعی پردازش داده‌ها به‌روزرسانی شود.</p></div>
+      <div class="page-intro container"><span class="kicker reveal">PRIVACY</span><h1 class="reveal">حریم <em>خصوصی</em></h1><p class="reveal">آنچه نسخه فعلی سایت در مرورگر ذخیره می‌کند.</p></div>
+      <div class="container text-policy reveal">
+        <h2>ذخیره‌سازی در مرورگر</h2>
+        <p>سبد خرید و فهرست علاقه‌مندی‌ها با استفاده از localStorage روی همان مرورگر ذخیره می‌شوند تا پس از بستن و بازکردن صفحه باقی بمانند. این اطلاعات به سرور ارسال نمی‌شوند.</p>
+        <h2>اطلاعات فرم سفارش</h2>
+        <p>نام، تلفن و آدرس واردشده در فرم، در نسخه فعلی برای ساخت متن درخواست سفارش در حافظه صفحه استفاده می‌شوند و در localStorage ذخیره نمی‌شوند. با کپی‌کردن متن، اطلاعات را خودت برای پشتیبانی ارسال می‌کنی.</p>
+        <h2>زیرساخت انتشار</h2>
+        <p>GitHub Pages، CDN فونت و آیکون و سرویس‌های تصاویر ممکن است مطابق سیاست‌های خود داده‌های فنی مانند درخواست فایل‌ها را پردازش کنند. برای فروش واقعی، متن حریم خصوصی و رضایت کاربر را با شیوه عملیاتی کسب‌وکار هماهنگ کن.</p>
+      </div>
     </section>
 
     <!-- CONTACT -->
     <section class="view-section" id="contact-view" data-view="contact">
-      <div class="page-hero container"><span class="section-kicker reveal">LET'S TALK PERFUME</span><h1 class="reveal">ارتباط با <em>VINO</em></h1><p class="reveal">برای مشاوره رایحه، استعلام موجودی، قیمت یا هماهنگی سفارش از کانال‌های زیر استفاده کن.</p></div>
-      <div class="container contact-grid"><a class="contact-card telegram-contact reveal" href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><i class="fa-brands fa-telegram"></i></span><span class="section-kicker">TELEGRAM</span><h2>کانال تلگرام VINO</h2><p>مشاهده کانال و ارسال پیام در تلگرام</p><b>ورود به تلگرام <i class="fa-solid fa-arrow-left"></i></b></a><a class="contact-card bale-contact reveal delay-1" href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><i class="fa-solid fa-comment-dots"></i></span><span class="section-kicker">BALE</span><h2>کانال بله VINO</h2><p>مشاهده کانال و ارتباط در پیام‌رسان بله</p><b>ورود به بله <i class="fa-solid fa-arrow-left"></i></b></a></div>
-      <div class="container contact-note reveal"><i class="fa-solid fa-circle-info"></i><p>برای ثبت سفارش واقعی، لطفاً پیش از پرداخت، موجودی، قیمت، نسخه محصول و شرایط ارسال را از پشتیبانی تأیید بگیر.</p></div>
+      <div class="page-intro container"><span class="kicker reveal">LET'S TALK PERFUME</span><h1 class="reveal">ارتباط با <em>VINO</em></h1><p class="reveal">برای مشاوره، استعلام موجودی و هماهنگی سفارش از کانال‌های رسمی پیام بده.</p></div>
+      <div class="container contact-grid">
+        <a class="contact-card telegram-contact reveal" href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><i class="fa-brands fa-telegram"></i></span><small>TELEGRAM CHANNEL</small><h2>کانال تلگرام VINO</h2><p>مشاهده کانال و ارسال پیام به پشتیبانی</p><b>ورود به تلگرام <i class="fa-solid fa-arrow-left"></i></b></a>
+        <a class="contact-card bale-contact reveal delay-1" href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><i class="fa-solid fa-comment-dots"></i></span><small>BALE CHANNEL</small><h2>کانال بله VINO</h2><p>ارتباط از طریق پیام‌رسان بله</p><b>ورود به بله <i class="fa-solid fa-arrow-left"></i></b></a>
+      </div>
+      <div class="container contact-footnote reveal"><i class="fa-solid fa-circle-info"></i><p>آدرس‌های شبکه اجتماعی مطابق اطلاعات ارائه‌شده توسط صاحب سایت درج شده‌اند. شماره تماس، نشانی فروشگاه یا ساعات پاسخ‌گویی تا زمان تأیید، به‌صورت ساختگی نمایش داده نمی‌شوند.</p></div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-main container">
-      <div class="footer-brand"><a class="brand-lockup" href="#home" onclick="navigateTo('home'); return false;"><img src="logo.png" alt="VINO" class="footer-logo"><span class="brand-word">VINO</span></a><p>عطر، امضای شخصیت شماست. انتخابی با سلیقه از دنیای رایحه‌ها.</p><div class="footer-social"><a href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer" aria-label="تلگرام VINO"><i class="fa-brands fa-telegram"></i></a><a href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer" aria-label="بله VINO"><i class="fa-solid fa-comment-dots"></i></a></div></div>
-      <div class="footer-column"><h3>دسترسی سریع</h3><a href="#home" onclick="navigateTo('home'); return false;">صفحه اصلی</a><a href="#shop" onclick="navigateTo('shop'); return false;">فروشگاه عطر</a><a href="#guide" onclick="navigateTo('guide'); return false;">راهنمای رایحه</a><a href="#about" onclick="navigateTo('about'); return false;">درباره ما</a></div>
-      <div class="footer-column"><h3>راهنمای مشتریان</h3><a href="#faq" onclick="navigateTo('faq'); return false;">پرسش‌های متداول</a><a href="#shipping" onclick="navigateTo('shipping'); return false;">ارسال و مرجوعی</a><a href="#privacy" onclick="navigateTo('privacy'); return false;">حریم خصوصی</a><a href="#contact" onclick="navigateTo('contact'); return false;">تماس با ما</a></div>
-      <div class="footer-column footer-contact"><h3>همراه VINO</h3><p>برای استعلام موجودی، قیمت و هماهنگی سفارش با ما در ارتباط باش.</p><a class="footer-channel" href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> تلگرام</a><a class="footer-channel" href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-comment-dots"></i> بله</a></div>
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a class="brand footer-brand-lockup" href="#home" onclick="navigateTo('home');return false;"><img src="logo.png" alt="لوگوی VINO"><span class="brand-type"><b>VINO</b><small>PERFUME ATELIER</small></span></a>
+        <p>فضایی برای کشف عطر، شناخت نت‌ها و انتخاب رایحه‌ای که به سلیقه تو نزدیک‌تر است.</p>
+        <div class="footer-social"><a href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer" aria-label="تلگرام"><i class="fa-brands fa-telegram"></i></a><a href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer" aria-label="بله"><i class="fa-solid fa-comment-dots"></i></a></div>
+      </div>
+      <div class="footer-column"><h3>دسترسی سریع</h3><a href="#home" onclick="navigateTo('home');return false;">خانه</a><a href="#shop" onclick="navigateTo('shop');return false;">مجموعه عطرها</a><a href="#guide" onclick="navigateTo('guide');return false;">راهنمای رایحه</a><a href="#about" onclick="navigateTo('about');return false;">داستان VINO</a></div>
+      <div class="footer-column"><h3>راهنمای مشتری</h3><a href="#faq" onclick="navigateTo('faq');return false;">پرسش‌های متداول</a><a href="#shipping" onclick="navigateTo('shipping');return false;">ارسال و مرجوعی</a><a href="#privacy" onclick="navigateTo('privacy');return false;">حریم خصوصی</a><a href="#contact" onclick="navigateTo('contact');return false;">تماس با ما</a></div>
+      <div class="footer-column footer-note"><h3>پیش از سفارش</h3><p>نسخه، حجم، اصالت، موجودی و قیمت نهایی محصول را از پشتیبانی استعلام کن. این نسخه هنوز به درگاه پرداخت متصل نیست.</p><button class="footer-shop-link" onclick="navigateTo('shop')">انتخاب عطر <i class="fa-solid fa-arrow-left"></i></button></div>
     </div>
-    <div class="footer-bottom container"><span>© ۱۴۰۵ VINO · تمامی حقوق محفوظ است.</span><span>CRAFTED WITH PASSION</span></div>
+    <div class="container footer-bottom"><span>© VINO — PERFUME ATELIER</span><span>ساخته‌شده برای تجربه بهتر انتخاب عطر</span></div>
   </footer>
 
-  <!-- CART DRAWER -->
+  <!-- CART -->
   <div class="drawer-backdrop" id="cart-backdrop" onclick="toggleCart(false)"></div>
-  <aside class="drawer cart-drawer" id="cart-drawer" aria-label="سبد خرید" aria-modal="true">
-    <div class="drawer-header"><div><span class="section-kicker">YOUR SELECTION</span><h2>سبد خرید</h2></div><button class="close-button" onclick="toggleCart(false)" aria-label="بستن سبد"><i class="fa-solid fa-xmark"></i></button></div>
+  <aside class="drawer cart-drawer" id="cart-drawer" role="dialog" aria-label="سبد خرید" aria-modal="true" aria-hidden="true" inert>
+    <div class="drawer-header"><div><span class="kicker">YOUR SELECTION</span><h2>سبد انتخاب تو</h2></div><button class="close-button" onclick="toggleCart(false)" aria-label="بستن سبد"><i class="fa-solid fa-xmark"></i></button></div>
     <div class="drawer-body" id="cart-items"></div>
-    <div class="drawer-footer"><div class="coupon-row"><input id="discount-code" type="text" placeholder="کد تخفیف، مثل VINO20" autocomplete="off"><button type="button" onclick="applyDiscount()">اعمال</button></div><p class="coupon-message" id="discount-message"></p><div class="summary-line"><span>جمع محصولات</span><b id="cart-subtotal">۰ تومان</b></div><div class="summary-line discount-line" id="discount-row" hidden><span>تخفیف VINO20</span><b id="cart-discount">۰ تومان</b></div><div class="summary-line"><span>هزینه ارسال</span><b class="muted-value">پس از هماهنگی</b></div><div class="summary-total"><span>جمع پس از تخفیف</span><b id="cart-total">۰ تومان</b></div><button class="button button-gold checkout-button" onclick="openCheckout()">ادامه و آماده‌سازی سفارش <i class="fa-solid fa-arrow-left"></i></button><small class="drawer-disclaimer">هزینه ارسال و موجودی نهایی پیش از ثبت سفارش با پشتیبانی هماهنگ می‌شود.</small></div>
+    <div class="drawer-footer">
+      <div class="coupon-row"><input id="discount-code" type="text" placeholder="کد تخفیف VINO20" autocomplete="off"><button onclick="applyDiscount()">اعمال</button></div>
+      <p id="discount-message" class="coupon-message"></p>
+      <div class="summary-line"><span>جمع محصولات</span><b id="cart-subtotal">۰ تومان</b></div>
+      <div class="summary-line discount-line" id="discount-row" hidden><span>تخفیف ۲۰٪</span><b id="cart-discount">۰ تومان</b></div>
+      <div class="summary-line"><span>ارسال</span><b class="muted-value">پس از هماهنگی</b></div>
+      <div class="summary-total"><span>جمع فعلی</span><b id="cart-total">۰ تومان</b></div>
+      <button class="button button-dark checkout-button" onclick="openCheckout()">آماده‌سازی درخواست سفارش <i class="fa-solid fa-arrow-left"></i></button>
+      <small class="drawer-disclaimer">قیمت، نسخه و موجودی نهایی قبل از پرداخت باید تأیید شود.</small>
+    </div>
   </aside>
 
-  <!-- WISHLIST DRAWER -->
+  <!-- WISHLIST -->
   <div class="drawer-backdrop" id="wishlist-backdrop" onclick="toggleWishlistDrawer(false)"></div>
-  <aside class="drawer wishlist-drawer" id="wishlist-drawer" aria-label="علاقه‌مندی‌ها" aria-modal="true"><div class="drawer-header"><div><span class="section-kicker">SAVED FOR LATER</span><h2>علاقه‌مندی‌ها</h2></div><button class="close-button" onclick="toggleWishlistDrawer(false)" aria-label="بستن علاقه‌مندی‌ها"><i class="fa-solid fa-xmark"></i></button></div><div class="drawer-body" id="wishlist-items"></div></aside>
+  <aside class="drawer wishlist-drawer" id="wishlist-drawer" role="dialog" aria-label="علاقه‌مندی‌ها" aria-modal="true" aria-hidden="true" inert>
+    <div class="drawer-header"><div><span class="kicker">SAVED FOR LATER</span><h2>علاقه‌مندی‌ها</h2></div><button class="close-button" onclick="toggleWishlistDrawer(false)" aria-label="بستن"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="drawer-body" id="wishlist-items"></div>
+  </aside>
 
-  <!-- ORDER PREVIEW MODAL -->
+  <!-- CHECKOUT REQUEST -->
   <div class="modal-backdrop" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
-    <div class="modal-card order-modal"><button class="close-button modal-close" type="button" onclick="closeCheckout()" aria-label="بستن"><i class="fa-solid fa-xmark"></i></button><span class="section-kicker">ORDER REQUEST</span><h2 id="checkout-title">آماده‌سازی درخواست سفارش</h2><p class="modal-intro">اطلاعات زیر فقط برای ساخت متن درخواست در همین صفحه استفاده می‌شود؛ سفارش به سرور یا درگاه پرداخت ارسال نمی‌شود.</p>
-      <form id="checkout-form" onsubmit="submitCheckout(event)"><div class="form-grid"><label>نام و نام خانوادگی<input id="customer-name" type="text" required minlength="2" autocomplete="name" placeholder="نام شما"></label><label>شماره تماس<input id="customer-phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="شماره تماس"></label></div><label>شهر و آدرس<textarea id="customer-address" rows="3" required autocomplete="street-address" placeholder="شهر، خیابان، پلاک و واحد"></textarea></label><label>توضیحات (اختیاری)<textarea id="customer-note" rows="2" placeholder="مثلاً زمان مناسب تماس..."></textarea></label><div class="order-preview-box" id="order-preview"></div><button class="button button-gold modal-submit" type="submit"><i class="fa-solid fa-copy"></i> ساخت و کپی متن سفارش</button></form>
-      <div class="modal-social"><a href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> ادامه در تلگرام</a><a href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-comment-dots"></i> ادامه در بله</a></div>
-      <p class="modal-warning">نسخه فعلی فروشگاه نمایشی است؛ برای پرداخت آنلاین و ثبت سفارش قطعی، اتصال بک‌اند و درگاه پرداخت لازم است.</p>
+    <div class="modal-card">
+      <button class="close-button modal-close" onclick="closeCheckout()" aria-label="بستن"><i class="fa-solid fa-xmark"></i></button>
+      <span class="kicker">ORDER REQUEST</span>
+      <h2 id="checkout-title">ساخت درخواست سفارش</h2>
+      <p class="modal-intro">اطلاعات زیر فقط برای ساخت متن درخواست در همین مرورگر استفاده می‌شود. سفارش یا پرداختی به سرور ارسال نمی‌شود.</p>
+      <form id="checkout-form" onsubmit="submitCheckout(event)">
+        <div class="form-grid">
+          <label>نام و نام خانوادگی<input id="customer-name" required minlength="2" autocomplete="name" placeholder="نام شما"></label>
+          <label>شماره تماس<input id="customer-phone" required minlength="7" autocomplete="tel" inputmode="tel" placeholder="شماره تماس"></label>
+        </div>
+        <label>شهر و آدرس<textarea id="customer-address" rows="3" required minlength="6" autocomplete="street-address" placeholder="شهر، خیابان، پلاک و واحد"></textarea></label>
+        <label>توضیحات (اختیاری)<textarea id="customer-note" rows="2" placeholder="زمان مناسب تماس یا توضیحات تکمیلی"></textarea></label>
+        <div class="order-preview" id="order-preview">خلاصه انتخاب‌ها پس از تکمیل فرم نمایش داده می‌شود.</div>
+        <button class="button button-dark modal-submit" type="submit"><i class="fa-solid fa-copy"></i> ساخت و کپی متن سفارش</button>
+      </form>
+      <div class="modal-social"><a href="https://t.me/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> ارسال از تلگرام</a><a href="https://ble.ir/vinoshop111" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-comment-dots"></i> ارسال از بله</a></div>
+      <p class="modal-warning">این فرم رسید پرداخت یا تأیید خرید نیست. موجودی، مبلغ نهایی و هزینه ارسال باید توسط فروشگاه تأیید شوند.</p>
     </div>
   </div>
 
-  <button class="back-to-top" id="back-to-top" type="button" aria-label="بازگشت به بالای صفحه" onclick="window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
-
+  <button class="back-top" id="back-top" type="button" aria-label="بازگشت به بالا" onclick="window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
   <script src="script.js" defer></script>
 </body>
 </html>
