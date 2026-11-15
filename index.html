@@ -3,26 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VINO | بوتیک عطر و ادکلن لوکس</title>
+    <title>VINO | امپراتوری عطر و ادکلن لوکس</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- پیش‌لودر -->
+    <!-- نشانگر موس سفارشی (Custom Cursor) -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- افکت ذرات معلق (Particles Canvas) -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- پیش‌لودر سینمایی -->
     <div id="preloader">
         <div class="loader-content">
+            <div class="loader-circle"></div>
             <img src="logo.png" alt="VINO" class="loader-logo">
-            <div class="loader-bar"><div class="loader-progress"></div></div>
-            <p class="loader-text">در حال آماده‌سازی رایحه‌ها...</p>
+            <div class="loader-text-container">
+                <h2>VINO</h2>
+                <p>در حال استخراج بهترین رایحه‌ها...</p>
+            </div>
         </div>
     </div>
 
-    <!-- نوتیفیکیشن (Toast) -->
+    <!-- سیستم نوتیفیکیشن (Toast) -->
     <div id="toast-container" class="toast-container"></div>
 
-    <!-- هدر و منو -->
+    <!-- هدر شیشه‌ای -->
     <header class="glass-nav">
         <div class="nav-container">
             <a href="#" class="logo" onclick="navigateTo('home')">
@@ -32,7 +42,7 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="#" class="nav-btn active" data-target="home" onclick="navigateTo('home')">خانه</a></li>
-                    <li><a href="#" class="nav-btn" data-target="shop" onclick="navigateTo('shop')">فروشگاه</a></li>
+                    <li><a href="#" class="nav-btn" data-target="shop" onclick="navigateTo('shop')">بوتیک عطر</a></li>
                     <li><a href="#" class="nav-btn" data-target="about" onclick="navigateTo('about')">درباره ما</a></li>
                 </ul>
             </nav>
@@ -45,151 +55,250 @@
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span class="badge" id="cart-badge">0</span>
                 </div>
+                <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     </header>
 
     <!-- ==================== 1. صفحه خانه ==================== -->
     <section id="home-view" class="view-section active">
+        <!-- هیرو سکشن با افکت پارالاکس -->
         <div class="hero-section">
-            <div class="hero-bg parallax-bg" style="background-image: url('header.png');"></div>
+            <div class="hero-bg" style="background-image: url('header.png');"></div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h1 class="main-title reveal">عطر، امضای شخصیت شماست</h1>
-                <p class="subtitle reveal delay-1">در بوتیک VINO به دنیایی از رایحه‌های خاص، نایاب و ماندگار قدم بگذارید. تجربه‌ای فراتر از یک خرید ساده.</p>
+                <div class="reveal-text">
+                    <span class="line">عطر، امضای</span>
+                    <span class="line gold-text">شخصیت شماست</span>
+                </div>
+                <p class="subtitle typewriter" data-text="در بوتیک VINO به دنیایی از رایحه‌های نایاب، ماندگار و لوکس قدم بگذارید. تجربه‌ای فراتر از یک خرید ساده..."></p>
                 
                 <div class="features-grid reveal delay-2">
-                    <div class="feature-item"><i class="fa-solid fa-shield-halved"></i><span>تضمین اصالت</span></div>
-                    <div class="feature-item"><i class="fa-solid fa-truck-fast"></i><span>ارسال اکسپرس</span></div>
-                    <div class="feature-item"><i class="fa-solid fa-gem"></i><span>برندهای نایاب</span></div>
+                    <div class="feature-item hover-lift">
+                        <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span>تضمین اصالت</span>
+                        <small>۱۰۰٪ اورجینال</small>
+                    </div>
+                    <div class="feature-item hover-lift">
+                        <div class="icon-box"><i class="fa-solid fa-truck-fast"></i></div>
+                        <span>ارسال اکسپرس</span>
+                        <small>به سراسر کشور</small>
+                    </div>
+                    <div class="feature-item hover-lift">
+                        <div class="icon-box"><i class="fa-solid fa-gem"></i></div>
+                        <span>برندهای نایاب</span>
+                        <small>بهترین‌های دنیا</small>
+                    </div>
                 </div>
 
-                <button class="cta-button reveal delay-3" onclick="navigateTo('shop')">
-                    <i class="fa-solid fa-bag-shopping"></i> ورود به فروشگاه
-                </button>
+                <div class="hero-buttons reveal delay-3">
+                    <button class="cta-button magnetic" onclick="navigateTo('shop')">
+                        <i class="fa-solid fa-bag-shopping"></i> ورود به بوتیک
+                    </button>
+                    <button class="cta-button outline magnetic" onclick="navigateTo('about')">داستان ما</button>
+                </div>
             </div>
             <div class="slogan-text">More than a scent... It's a lifestyle</div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+                <span>اسکرول کنید</span>
+            </div>
         </div>
 
-        <!-- برندهای معتبر -->
-        <div class="brands-strip reveal">
-            <span>CHANEL</span> <span>DIOR</span> <span>TOM FORD</span> <span>CREED</span> <span>YSL</span>
+        <!-- نوار برندها (Marquee) -->
+        <div class="brands-marquee">
+            <div class="marquee-content">
+                <span>CHANEL</span><span>DIOR</span><span>TOM FORD</span><span>CREED</span><span>YSL</span><span>ARMANI</span><span>GUCCI</span><span>PRADA</span>
+                <span>CHANEL</span><span>DIOR</span><span>TOM FORD</span><span>CREED</span><span>YSL</span><span>ARMANI</span><span>GUCCI</span><span>PRADA</span>
+            </div>
         </div>
 
-        <!-- نظرات مشتریان -->
+        <!-- محصولات ویژه (Featured) -->
         <div class="container page-padding">
             <div class="section-header reveal">
-                <h2 class="section-title">تجربه مشتریان VINO</h2>
+                <span class="subtitle-gold">انتخاب سردبیر</span>
+                <h2 class="section-title">محصولات ویژه VINO</h2>
                 <div class="luxury-line"></div>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card reveal">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <p>بسته‌بندی فوق‌العاده شیک و ارسال سریع. عطر کاملاً اصل بود و رایحه‌اش دقیقاً همون چیزی بود که می‌خواستم.</p>
-                    <div class="user-info"><i class="fa-solid fa-user-circle"></i> <span>علی رضایی</span></div>
+            <div class="products-grid" id="featured-products"></div>
+        </div>
+
+        <!-- نظرات مشتریان با افکت کارت ۳ بعدی -->
+        <div class="testimonials-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">تجربه مشتریان</h2>
+                    <div class="luxury-line"></div>
                 </div>
-                <div class="testimonial-card reveal delay-1">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <p>پشتیبانی عالی! برای انتخاب عطر بهم مشاوره دادند و واقعا انتخاب درستی کردم. حتما بازم خرید می‌کنم.</p>
-                    <div class="user-info"><i class="fa-solid fa-user-circle"></i> <span>سارا محمدی</span></div>
-                </div>
-                <div class="testimonial-card reveal delay-2">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <p>کیفیت عطرها بی‌نظیره. قیمت‌ها هم نسبت به کیفیت منصفانه‌ست. تجربه خرید خیلی لذت‌بخشی بود.</p>
-                    <div class="user-info"><i class="fa-solid fa-user-circle"></i> <span>رضا کریمی</span></div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card glass reveal tilt-card">
+                        <i class="fa-solid fa-quote-right quote-icon"></i>
+                        <p>بسته‌بندی فوق‌العاده شیک و ارسال سریع. عطر کاملاً اصل بود و رایحه‌اش دقیقاً همون چیزی بود که می‌خواستم.</p>
+                        <div class="user-info"><i class="fa-solid fa-user-circle"></i> <span>علی رضایی</span></div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card glass reveal delay-1 tilt-card">
+                        <i class="fa-solid fa-quote-right quote-icon"></i>
+                        <p>پشتیبانی عالی! برای انتخاب عطر بهم مشاوره دادند و واقعا انتخاب درستی کردم. حتما بازم خرید می‌کنم.</p>
+                        <div class="user-info"><i class="fa-solid fa-user-circle"></i> <span>سارا محمدی</span></div>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card glass reveal delay-2 tilt-card">
+                        <i class="fa-solid fa-quote-right quote-icon"></i>
+                        <p>کیفیت عطرها بی‌نظیره. قیمت‌ها هم نسبت به کیفیت منصفانه‌ست. تجربه خرید خیلی لذت‌بخشی بود.</p>
+                        <div class="user-info"><i class="fa-solid fa-user-circle"></i> <span>رضا کریمی</span></div>
+                        <div class="stars">★★★★★</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 2. صفحه فروشگاه ==================== -->
+    <!-- ==================== 2. صفحه بوتیک (فروشگاه) ==================== -->
     <section id="shop-view" class="view-section">
         <div class="container page-padding">
             <div class="section-header reveal">
-                <h2 class="section-title">مجموعه عطرهای VINO</h2>
+                <span class="subtitle-gold">مجموعه کامل</span>
+                <h2 class="section-title">بوتیک عطر VINO</h2>
                 <div class="luxury-line"></div>
-                <p>بهترین‌های دنیای عطر و ادکلن را از ما بخواهید.</p>
             </div>
 
-            <!-- جستجو و فیلتر -->
-            <div class="shop-controls reveal">
+            <!-- کنترل‌های پیشرفته -->
+            <div class="shop-controls glass reveal">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="search-input" placeholder="جستجوی عطر یا برند..." onkeyup="filterProducts()">
+                    <input type="text" id="search-input" placeholder="جستجوی عطر، برند..." onkeyup="filterAndSort()">
                 </div>
-                <div class="category-filters">
-                    <button class="filter-btn active" onclick="setCategory('all', this)">همه</button>
-                    <button class="filter-btn" onclick="setCategory('men', this)">مردانه</button>
-                    <button class="filter-btn" onclick="setCategory('women', this)">زنانه</button>
-                    <button class="filter-btn" onclick="setCategory('unisex', this)">یونیسکس</button>
+                <div class="filter-group">
+                    <select id="category-filter" onchange="filterAndSort()">
+                        <option value="all">همه دسته‌بندی‌ها</option>
+                        <option value="men">مردانه</option>
+                        <option value="women">زنانه</option>
+                        <option value="unisex">یونیسکس</option>
+                    </select>
+                    <select id="sort-filter" onchange="filterAndSort()">
+                        <option value="default">مرتب‌سازی: پیش‌فرض</option>
+                        <option value="price-asc">ارزان‌ترین</option>
+                        <option value="price-desc">گران‌ترین</option>
+                        <option value="rating">بیشترین امتیاز</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="products-grid" id="products-grid"></div>
-            <div id="no-results" style="display:none; text-align:center; margin-top:50px; color:var(--gold);">محصولی یافت نشد!</div>
+            <div class="products-grid" id="all-products"></div>
+            <div id="no-results" class="no-results" style="display:none;">
+                <i class="fa-solid fa-ghost"></i>
+                <h3>محصولی یافت نشد!</h3>
+                <p>فیلترها را تغییر دهید و دوباره تلاش کنید.</p>
+            </div>
         </div>
     </section>
 
     <!-- ==================== 3. صفحه جزئیات محصول ==================== -->
     <section id="product-view" class="view-section">
         <div class="container page-padding">
-            <button class="back-btn" onclick="navigateTo('shop')"><i class="fa-solid fa-arrow-right"></i> بازگشت به فروشگاه</button>
+            <button class="back-btn magnetic" onclick="navigateTo('shop')"><i class="fa-solid fa-arrow-right"></i> بازگشت به بوتیک</button>
             <div class="product-details-container" id="product-details"></div>
+            
+            <!-- محصولات مرتبط -->
+            <div class="related-products">
+                <h3 class="section-title" style="font-size: 1.8rem; margin-top: 60px;">شاید این‌ها را هم بپسندید</h3>
+                <div class="luxury-line" style="margin: 10px 0 30px;"></div>
+                <div class="products-grid" id="related-products"></div>
+            </div>
         </div>
     </section>
 
     <!-- ==================== 4. صفحه درباره ما ==================== -->
     <section id="about-view" class="view-section">
         <div class="container page-padding">
+            <div class="about-hero reveal">
+                <h2 class="section-title" style="font-size: 3rem;">داستان امپراتوری VINO</h2>
+                <div class="luxury-line"></div>
+            </div>
             <div class="about-container">
-                <div class="about-image-wrapper reveal">
+                <div class="about-image-wrapper reveal tilt-card">
                     <div class="glow-effect"></div>
                     <img src="images.png" alt="VINO" class="main-img">
                     <div class="social-cards">
-                        <a href="https://t.me/vinoshop111" target="_blank" class="social-card telegram">
+                        <a href="https://t.me/vinoshop111" target="_blank" class="social-card telegram magnetic">
                             <i class="fa-brands fa-telegram"></i>
-                            <div class="social-info"><span>تلگرام</span><small>کانال و پشتیبانی</small></div>
+                            <div class="social-info"><span>تلگرام</span><small>کانال پشتیبانی</small></div>
                         </a>
-                        <a href="https://ble.ir/vinoshop111" target="_blank" class="social-card bale">
+                        <a href="https://ble.ir/vinoshop111" target="_blank" class="social-card bale magnetic">
                             <i class="fa-solid fa-comment-dots"></i>
                             <div class="social-info"><span>بله</span><small>ارتباط مستقیم</small></div>
                         </a>
                     </div>
                 </div>
                 <div class="about-text reveal delay-1">
-                    <h2 class="section-title">داستان برند VINO</h2>
-                    <div class="luxury-line"></div>
+                    <h3>ما چگونه شروع کردیم؟</h3>
                     <p>در دنیای پر از عطرها، ما در <strong>VINO</strong> به دنبال چیزی فراتر از یک رایحه ساده هستیم. ما معتقدیم که عطر، امضای نهایی استایل شماست و می‌تواند خاطرات را جاودانه کند.</p>
-                    <p>تیم ما با سال‌ها تجربه در زمینه واردات و توزیع عطرهای نایاب، بهترین‌ها را برای شما گلچین کرده است.</p>
-                    <ul class="styled-list">
-                        <li><i class="fa-solid fa-gem"></i> <div><strong>کیفیت بی‌نظیر:</strong> رایحه‌های جذاب با اصالت تضمین شده.</div></li>
-                        <li><i class="fa-solid fa-bolt"></i> <div><strong>ارسال سریع:</strong> ارسال به سراسر کشور با بسته‌بندی ضدضربه.</div></li>
-                        <li><i class="fa-solid fa-headset"></i> <div><strong>مشاوره تخصصی:</strong> راهنمایی برای انتخاب عطر مناسب شخصیت شما.</div></li>
-                    </ul>
+                    <p>تیم ما با سال‌ها تجربه در زمینه واردات و توزیع عطرهای نایاب، بهترین‌ها را برای شما گلچین کرده است. از پاریس تا دبی، ما به دنبال رایحه‌هایی هستیم که داستانی برای گفتن دارند.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>۱۳۹۸ - تولد VINO</h4>
+                                <p>با یک رویا و چند شیشه عطر شروع کردیم.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>۱۴۰۰ - گسترش به سراسر کشور</h4>
+                                <p>ارسال به تمام نقاط ایران با بسته‌بندی ویژه.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>۱۴۰۵ - امروز</h4>
+                                <p>تبدیل شدن به یکی از معتبرترین بوتیک‌های آنلاین.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- فوتر -->
+    <!-- فوتر کامل -->
     <footer>
         <div class="footer-content">
             <div class="footer-col">
-                <img src="logo.png" alt="VINO" style="width:80px; margin-bottom:15px;">
-                <p>بوتیک تخصصی عطر و ادکلن. تجربه‌ای متفاوت از خرید رایحه‌های لوکس و نایاب.</p>
+                <img src="logo.png" alt="VINO" style="width:100px; margin-bottom:20px;">
+                <p>بوتیک تخصصی عطر و ادکلن. تجربه‌ای متفاوت از خرید رایحه‌های لوکس و نایاب. ما به شما کمک می‌کنیم تا امضای شخصی خود را پیدا کنید.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://t.me/vinoshop111"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
             </div>
             <div class="footer-col">
                 <h4>دسترسی سریع</h4>
                 <ul>
-                    <li><a href="#" onclick="navigateTo('home')">خانه</a></li>
-                    <li><a href="#" onclick="navigateTo('shop')">فروشگاه</a></li>
-                    <li><a href="#" onclick="navigateTo('about')">درباره ما</a></li>
+                    <li><a href="#" onclick="navigateTo('home')">صفحه اصلی</a></li>
+                    <li><a href="#" onclick="navigateTo('shop')">فروشگاه عطر</a></li>
+                    <li><a href="#" onclick="navigateTo('about')">درباره VINO</a></li>
+                    <li><a href="#">وبلاگ عطر</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>خدمات مشتریان</h4>
+                <ul>
+                    <li><a href="#">پیگیری سفارشات</a></li>
+                    <li><a href="#">شرایط بازگشت کالا</a></li>
+                    <li><a href="#">سوالات متداول</a></li>
+                    <li><a href="#">حریم خصوصی</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>تماس با ما</h4>
                 <p><i class="fa-solid fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</p>
                 <p><i class="fa-solid fa-envelope"></i> info@vinoshop.ir</p>
+                <p><i class="fa-solid fa-location-dot"></i> تهران، خیابان ولیعصر، برج VINO</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -197,25 +306,32 @@
         </div>
     </footer>
 
-    <!-- ==================== سبد خرید (Cart) ==================== -->
+    <!-- ==================== سبد خرید (Cart Drawer) ==================== -->
     <div class="overlay" id="cart-overlay" onclick="toggleCart()"></div>
     <aside class="drawer cart-drawer" id="cart-drawer">
         <div class="drawer-header">
-            <h3><i class="fa-solid fa-bag-shopping"></i> سبد خرید</h3>
+            <h3><i class="fa-solid fa-bag-shopping"></i> سبد خرید شما</h3>
             <button class="close-btn" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="drawer-body" id="cart-items"></div>
         <div class="drawer-footer">
-            <div class="total-price">مبلغ قابل پرداخت: <span id="cart-total">۰</span> تومان</div>
-            <button class="checkout-btn" onclick="openCheckout()">ثبت سفارش</button>
+            <div class="discount-section">
+                <input type="text" id="discount-code" placeholder="کد تخفیف (VINO20)">
+                <button onclick="applyDiscount()">اعمال</button>
+            </div>
+            <div class="total-price">
+                <span>مبلغ قابل پرداخت:</span>
+                <span id="cart-total">۰</span> تومان
+            </div>
+            <button class="checkout-btn magnetic" onclick="openCheckout()">ثبت سفارش</button>
         </div>
     </aside>
 
-    <!-- ==================== علاقه‌مندی‌ها (Wishlist) ==================== -->
+    <!-- ==================== علاقه‌مندی‌ها (Wishlist Drawer) ==================== -->
     <div class="overlay" id="wishlist-overlay" onclick="toggleWishlistDrawer()"></div>
     <aside class="drawer wishlist-drawer" id="wishlist-drawer">
         <div class="drawer-header">
-            <h3><i class="fa-solid fa-heart" style="color:#e74c3c;"></i> علاقه‌مندی‌ها</h3>
+            <h3><i class="fa-solid fa-heart" style="color:#e74c3c;"></i> علاقه‌مندی‌های شما</h3>
             <button class="close-btn" onclick="toggleWishlistDrawer()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="drawer-body" id="wishlist-items"></div>
@@ -223,24 +339,39 @@
 
     <!-- ==================== مدال پرداخت (Checkout Modal) ==================== -->
     <div class="modal-overlay" id="checkout-modal">
-        <div class="checkout-modal-content">
+        <div class="checkout-modal-content glass">
             <button class="close-btn modal-close" onclick="closeCheckout()"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="modal-title"><i class="fa-solid fa-credit-card"></i> تکمیل اطلاعات خرید</h3>
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> تکمیل اطلاعات خرید</h3>
+                <p>لطفا اطلاعات خود را با دقت وارد کنید.</p>
+            </div>
             <form id="checkout-form" onsubmit="submitCheckout(event)">
-                <div class="form-group">
-                    <label>نام و نام خانوادگی</label>
-                    <input type="text" required placeholder="مثلا: علی رضایی">
-                </div>
-                <div class="form-group">
-                    <label>شماره تماس</label>
-                    <input type="tel" required placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>نام و نام خانوادگی</label>
+                        <input type="text" required placeholder="مثلا: علی رضایی">
+                    </div>
+                    <div class="form-group">
+                        <label>شماره تماس</label>
+                        <input type="tel" required placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>آدرس دقیق پستی</label>
                     <textarea rows="3" required placeholder="استان، شهر، خیابان، کوچه، پلاک..."></textarea>
                 </div>
-                <button type="submit" class="checkout-btn" style="margin-top: 20px;">پرداخت و نهایی‌سازی</button>
+                <button type="submit" class="checkout-btn magnetic" style="margin-top: 20px;">پرداخت و نهایی‌سازی</button>
             </form>
+        </div>
+    </div>
+
+    <!-- مدال موفقیت (Success Modal) -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="success-content glass">
+            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <h2>سفارش شما ثبت شد!</h2>
+            <p>از خرید شما سپاسگزاریم. به زودی با شما تماس می‌گیریم.</p>
+            <button class="cta-button magnetic" onclick="closeSuccess()">بازگشت به سایت</button>
         </div>
     </div>
 
